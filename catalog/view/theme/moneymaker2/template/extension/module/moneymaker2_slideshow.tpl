@@ -1,6 +1,6 @@
-<div id="moneymaker2_slideshow<?php echo $module; ?>" class="<?php if ($hidden_xs) { ?>hidden-xs <?php } ?>owl-carousel owl-moneymaker2 <?php echo $navigation_style; ?>-buttons <?php echo $navigation_style; ?>-pagination">
+<div id="moneymaker2_slideshow<?php echo $module; ?>" class="<?php if ($hidden_xs) { ?>hidden-xs <?php } ?>owl-carousel owl-moneymaker2 <?php if ($tilt3d) { ?>tilt3d<?php } ?> <?php echo $navigation_style; ?>-buttons <?php echo $navigation_style; ?>-pagination">
     <?php foreach ($banners_settings as $key => $banners_setting) { ?>
-    <div class="item">
+    <div class="item"<?php if ($tilt3d) { ?> data-tilt data-tilt-scale="1.05" data-tilt-perspective="2000" data-tilt-speed="800" data-tilt-max="10"<?php } ?>>
       <div class="item-text <?php echo $banners_setting['position']; ?> <?php echo $banners_setting['text_style']; ?> /*col-sm-12*/ col-md-<?php echo $banners_setting['text_width']; ?> text-center">
         <div><?php echo $banners_setting['title']; ?></div>
         <p class="hidden-xs"><?php echo $banners_setting['text']; ?></p>
@@ -101,9 +101,8 @@
         $('#moneymaker2_slideshow<?php echo $module; ?> .owl-wrapper-outer img').css('-o-transform', 'translate(0px, -' + ($( "#moneymaker2_slideshow<?php echo $module; ?> .item img" ).height()-$( "#moneymaker2_slideshow<?php echo $module; ?>" ).height()-1) + 'px)');
         $('#moneymaker2_slideshow<?php echo $module; ?> .owl-wrapper-outer img').css('transform', 'translate(0px, -' + ($( "#moneymaker2_slideshow<?php echo $module; ?> .item img" ).height()-$( "#moneymaker2_slideshow<?php echo $module; ?>" ).height()-1) + 'px)');
       }
-
     }
   });
 <?php } ?>
-
 //--></script>
+<?php if ($tilt3d) { ?><script src="catalog/view/javascript/jquery/moneymaker2/vanilla-tilt.min.js" type="text/javascript"></script><?php } ?>

@@ -84,7 +84,7 @@ foreach ($disallow as $rule) {
 <meta property="og:image" content="<?php echo $logo; ?>" />
 <?php } ?>
 <meta property="og:site_name" content="<?php echo $name; ?>" />
-<!-- mmr2 2.2.1 ocs2.3 -->
+<!-- mmr2 2.3.0 ocs2.3 -->
 <?php if ($moneymaker2_common_minify) { ?>
   <?php foreach ($moneymaker2_minify['ext_css'] as $value) { ?>
   <link href="<?php echo $value['href']; ?>" type="text/css" rel="<?php echo $value['rel']; ?>" media="<?php echo $value['media']; ?>" />
@@ -166,8 +166,8 @@ foreach ($disallow as $rule) {
       <div class="collapse navbar-collapse navbar-top-collapse">
         <ul class="nav navbar-nav">
           <li class="dropdown" id="contacts">
-            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-<?php echo $moneymaker2_header_contacts_icon ? $moneymaker2_header_contacts_icon : 'mobile'; ?>"></i> <span class="phone"><?php echo $moneymaker2_header_contacts_phone ? $moneymaker2_header_contacts_phone : $telephone; ?></span> <?php if ($moneymaker2_header_contacts) { ?><span class="hidden-sm"><?php echo $moneymaker2_header_contacts_title; ?> </span><i class="fa fa-angle-down"></i><?php } ?></a>
-            <?php if ($moneymaker2_header_contacts) { ?>
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-<?php echo $moneymaker2_header_contacts_icon ? $moneymaker2_header_contacts_icon : 'mobile'; ?>"></i> <span class="phone"><?php echo $moneymaker2_header_contacts_phone ? $moneymaker2_header_contacts_phone : $telephone; ?></span> <?php if ($moneymaker2_header_contacts||$moneymaker2_modules_callback_enabled) { ?><span class="hidden-sm"><?php echo $moneymaker2_header_contacts_title; ?> </span><i class="fa fa-angle-down"></i><?php } ?></a>
+            <?php if ($moneymaker2_header_contacts||$moneymaker2_modules_callback_enabled) { ?>
             <ul class="dropdown-menu">
               <?php if ($moneymaker2_modules_callback_enabled) { ?>
               <li class="dropdown-header keep-open"><?php echo $moneymaker2_modules_callback_header; ?></li>
@@ -338,7 +338,7 @@ foreach ($disallow as $rule) {
     <div class="container">
       <div class="collapse navbar-collapse navbar-menu-collapse">
         <ul class="nav navbar-nav">
-          <?php if (!$moneymaker2_header_categories_panel_mod) { ?>
+          <?php if (!$moneymaker2_header_categories_panel_mod&&!$moneymaker2_header_categories_panel_hideparents) { ?>
             <?php foreach ($categories as $key => $category) { ?>
             <li class="dropdown">
               <?php if ($category['children']) { ?>
@@ -354,7 +354,7 @@ foreach ($disallow as $rule) {
               <?php } ?>
             </li>
             <?php } ?>
-          <?php } else { ?>
+          <?php } else if (!$moneymaker2_header_categories_panel_hideparents) { ?>
             <?php foreach ($categories as $key => $category) { ?>
             <li class="dropdown navbar-full-fw">
               <?php if ($category['children']) { ?>
@@ -396,6 +396,9 @@ foreach ($disallow as $rule) {
               <?php } ?>
             </li>
             <?php } ?>
+          <?php } ?>
+          <?php foreach ($moneymaker2_header_panellinks as $value) { ?>
+            <li><a href="<?php echo $value['multilink'] ? $value['multilink'] : $value['link']; ?>"><i class="fa fa-fw fa-<?php echo $value['icon']; ?>"></i> <?php echo $value['caption']; ?></a></li>
           <?php } ?>
         </ul>
       </div>

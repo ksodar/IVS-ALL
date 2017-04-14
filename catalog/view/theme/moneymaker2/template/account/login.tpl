@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="row">
-        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="col-sm-12 form-horizontal" role="form">
+        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="col-sm-12 form-horizontal">
           <fieldset>
             <legend><?php echo $text_returning_customer; ?></legend>
             <div class="form-group">

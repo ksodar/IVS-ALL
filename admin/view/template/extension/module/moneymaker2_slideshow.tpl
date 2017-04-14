@@ -198,6 +198,20 @@ if(empty($autoplay_timeout)) $autoplay_timeout                  = '4';
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_tilt3d_help; ?>"><?php echo $entry_tilt3d; ?></span></label>
+						<div class="col-sm-4">
+							<select name="tilt3d" class="form-control">
+								<?php if ($tilt3d) { ?>
+								<option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+								<option value="0"><?php echo $text_disabled; ?></option>
+								<?php } else { ?>
+								<option value="1"><?php echo $text_enabled; ?></option>
+								<option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+								<?php } ?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_parallax_help; ?>"><?php echo $entry_parallax; ?></span></label>
 						<div class="col-sm-4">
 							<select name="parallax" class="form-control">
@@ -677,7 +691,7 @@ if(empty($autoplay_timeout)) $autoplay_timeout                  = '4';
 			html += '<div class="col-sm-10">';
 			html += '<select name="banners_settings[' + banners_setting_row + '][text_width]" class="form-control">';
 			<?php for ($j = 1; $j <= 12; $j++) { ?>
-				html += '<option value="<?php echo $j; ?>" <?php if ($j == 4) { ?>selected<?php } ?>><?php echo round($j*(100/12)).'%'; ?></option>';
+				html += '<option value="<?php echo $j; ?>" <?php if ($j == 6) { ?>selected<?php } ?>><?php echo round($j*(100/12)).'%'; ?></option>';
 			<?php } ?>
 			html += '</select>';
 			html += '</div>';

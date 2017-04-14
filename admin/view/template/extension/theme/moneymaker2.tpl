@@ -9,7 +9,7 @@ $moneymaker2_fa_icons  = array(
 );
 $moneymaker2_animation_in_styles = array('bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'flipInX', 'flipInY', 'lightSpeedIn', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'rollIn', 'slideInDown', 'slideInLeft', 'slideInRight', 'slideInUp', 'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'bounce', 'flash', 'flip', 'hinge', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello');
 $moneymaker2_animation_out_styles = array('bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'flipOutX', 'flipOutY', 'lightSpeedOut', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight', 'rollOut', 'slideOutDown', 'slideOutLeft', 'slideOutRight', 'slideOutUp', 'zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp', 'bounce', 'flash', 'flip', 'hinge', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello');
-$moneymaker2_gallery_animation_styles = array('3d-unfold', 'move-from-top', 'move-horizontal', 'newspaper', 'zoom-in', 'zoom-out', 'slide-bottom');
+$moneymaker2_gallery_animation_styles = array('fade', '3d-unfold', 'move-from-top', 'move-horizontal', 'newspaper', 'zoom-in', 'zoom-out', 'slide-bottom');
 $moneymaker2_delimiters = array('/',',',':','|','(',')');
 
 // XY, X=bootstrap class symbol (col-sm-X), Y=columns number
@@ -41,6 +41,7 @@ if(empty($moneymaker2_common_products_title_overflow)) $moneymaker2_common_produ
 
 if(empty($moneymaker2_header_strip_bg_transparency)) $moneymaker2_header_strip_bg_transparency                          = "80";
 if(empty($moneymaker2_header_categorystrip_bg_transparency)) $moneymaker2_header_categorystrip_bg_transparency          = "80";
+if(empty($moneymaker2_header_alert_bg_color)) $moneymaker2_header_alert_bg_color                                        = "#cccccc";
 if(empty($moneymaker2_header_strip_bg_color)) $moneymaker2_header_strip_bg_color                                        = "#111111";
 if(empty($moneymaker2_header_strip_font_color[0])) $moneymaker2_header_strip_font_color[0]                              = "#9d9d9d"; //static
 if(empty($moneymaker2_header_strip_font_color[1])) $moneymaker2_header_strip_font_color[1]                              = "#ffffff"; //hover
@@ -83,7 +84,7 @@ if(empty($moneymaker2_header_search_caption_hide['md'])) $moneymaker2_header_sea
 if(empty($moneymaker2_header_search_caption_hide['sm'])) $moneymaker2_header_search_caption_hide['sm']                  = '1';
 if(empty($moneymaker2_header_menu_caption_hide['lg'])) $moneymaker2_header_menu_caption_hide['lg']                      = '0';
 if(empty($moneymaker2_header_menu_caption_hide['md'])) $moneymaker2_header_menu_caption_hide['md']                      = '0';
-if(empty($moneymaker2_header_menu_caption_hide['sm'])) $moneymaker2_header_menu_caption_hide['sm']                      = '1';
+if(empty($moneymaker2_header_menu_caption_hide['sm'])) $moneymaker2_header_menu_caption_hide['sm']                      = '0';
 
 if(empty($moneymaker2_header_categories_menu_thumbs_width)) $moneymaker2_header_categories_menu_thumbs_width            = '90';
 if(empty($moneymaker2_header_categories_menu_thumbs_height)) $moneymaker2_header_categories_menu_thumbs_height          = '90';
@@ -168,6 +169,9 @@ if(empty($moneymaker2_modules_promo_style)) $moneymaker2_modules_promo_style    
 if(empty($moneymaker2_modules_quickorder_image_width)) $moneymaker2_modules_quickorder_image_width                      = "228";
 if(empty($moneymaker2_modules_quickorder_image_height)) $moneymaker2_modules_quickorder_image_height                    = "228";
 if(empty($moneymaker2_modules_quickorder_phone_mask)) $moneymaker2_modules_quickorder_phone_mask                        = "(000) 000-00-00";
+if(empty($moneymaker2_modules_newsletter_thumbs_width)) $moneymaker2_modules_newsletter_thumbs_width                    = "228";
+if(empty($moneymaker2_modules_newsletter_thumbs_height)) $moneymaker2_modules_newsletter_thumbs_height                  = "228";
+if(empty($moneymaker2_modules_popup_limit)) $moneymaker2_modules_popup_limit                                            = "30";
 ?>
 
 <style type="text/css">
@@ -625,6 +629,7 @@ fieldset.successively legend small.text-muted {
 											}
 
 											$moneymaker2_styles.= "footer {background-color: ".$moneymaker2_footer_top_bg_color."; border-top: 2px solid ".$moneymaker2_footer_strip_bg_color."; color: ".$moneymaker2_footer_text_font_color.";}";
+											$moneymaker2_styles.= "footer .col-sm-3 > ul .input-group > input {color: ".$moneymaker2_footer_text_font_color.";}";
 											$moneymaker2_styles.= "footer .bottom .col-sm-3 {color: ".$moneymaker2_footer_text_font_color.";}";
 											$moneymaker2_styles.= "footer .bottom {background-color: ".$moneymaker2_footer_bottom_bg_color.";}";
 											$moneymaker2_styles.= "footer a, footer .bottom .col-sm-9 .fa-stack .fa-inverse {color: ".$moneymaker2_footer_links_font_color[0].";}";
@@ -636,7 +641,30 @@ fieldset.successively legend small.text-muted {
 											if ($moneymaker2_common_sidebars_responsive) {
 											$moneymaker2_styles.= "@media screen and (max-width: 767px) {body, html {overflow-x: hidden;} body > .container > .row {position: relative;} #column-left {left: -72%;margin-left: 15px;} #column-right {right: -72%;margin-right: 15px;} #column-left, #column-right {position: absolute;top: 0;width: 72%;} }";
 											}
-
+											if (isset($moneymaker2_catalog_categories_advantages_enabled)&&$moneymaker2_catalog_categories_advantages_enabled&&!$moneymaker2_catalog_categories_images_hide&&!$moneymaker2_common_categories_icons_enabled) {
+											$moneymaker2_styles.= "@media (min-width: 1200px) { ";
+											$moneymaker2_styles.= "#content.col-sm-12 .catalog-advantage {width: ".((1126-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "#content.col-sm-9 .catalog-advantage {width: ".((834-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "#content.col-sm-6 .catalog-advantage {width: ".((541-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "}";
+											$moneymaker2_styles.= "@media (min-width: 992px) and (max-width: 1199px) { ";
+											$moneymaker2_styles.= "#content.col-sm-12 .catalog-advantage {width: ".((926-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "#content.col-sm-9 .catalog-advantage {width: ".((682-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "#content.col-sm-6 .catalog-advantage {width: ".((441-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "}";
+											$moneymaker2_styles.= "@media (min-width: 768px) and (max-width: 991px) { ";
+											$moneymaker2_styles.= "#content.col-sm-12 .catalog-advantage {width: ".((706-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "#content.col-sm-9 .catalog-advantage {width: ".((519-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "#content.col-sm-6 .catalog-advantage {width: ".((331-$moneymaker2_image_category_width)/2)."px;}";
+											$moneymaker2_styles.= "}";
+											} else if (isset($moneymaker2_catalog_categories_advantages_enabled)&&$moneymaker2_catalog_categories_advantages_enabled&&$moneymaker2_catalog_categories_images_hide&&$moneymaker2_common_categories_icons_enabled) {
+											$moneymaker2_styles.= "@media (min-width: 1200px) {#content.col-sm-12 .catalog-advantage {width: 510px;}#content.col-sm-9 .catalog-advantage {width: 350px;}#content.col-sm-6 .catalog-advantage {width: 230px;}}";
+											$moneymaker2_styles.= "@media (min-width: 992px) and (max-width: 1199px) {#content.col-sm-12 .catalog-advantage {width: 420px;}#content.col-sm-9 .catalog-advantage {width: 300px;}#content.col-sm-6 .catalog-advantage {width: 190px;}}";
+											$moneymaker2_styles.= "@media (min-width: 768px) and (max-width: 991px) {#content.col-sm-12 .catalog-advantage {width: 310px;}#content.col-sm-9 .catalog-advantage {width: 220px;}#content.col-sm-6 .catalog-advantage {width: 135px;}}";
+											}
+											if (isset($moneymaker2_header_alert_bg_color)&&$moneymaker2_header_alert_bg_color) {
+											$moneymaker2_styles.= "body > .header-alert {background-color: ".$moneymaker2_header_alert_bg_color.";}";
+											}
 											$moneymaker2_styles.= ($moneymaker2_common_css_enabled&&isset($moneymaker2_common_css)) ? $moneymaker2_common_css : '';
 											$styles = html_entity_decode($moneymaker2_styles, ENT_QUOTES, 'UTF-8');
 
@@ -1086,7 +1114,38 @@ fieldset.successively legend small.text-muted {
 									<p class="col-sm-12"><?php echo $entry_header_help; ?><br /></p>
 								</div>
 							</fieldset>
+
 							<fieldset class="margin-top">
+								<legend><?php echo $entry_header_alert; ?></legend>
+								<div class="form-group margin-top">
+									<p class="col-sm-12"><?php echo $entry_header_alert_help; ?><br /></p>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><?php echo $text_enabled; ?></label>
+									<div class="col-sm-4">
+										<label class="radio-inline"><input type="radio" name="moneymaker2_header_alert" value="1" <?php if ($moneymaker2_header_alert) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+										<label class="radio-inline"><input type="radio" name="moneymaker2_header_alert" value="0" <?php if (!$moneymaker2_header_alert) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+									</div>
+									<label class="col-sm-2 control-label"><?php echo $entry_background; ?></label>
+									<div class="col-sm-3">
+										<input type="text" name="moneymaker2_header_alert_bg_color" value="<?php echo $moneymaker2_header_alert_bg_color; ?>"  class="form-control colorpicker" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><?php echo $entry_text; ?></label>
+									<div class="col-sm-9">
+										<?php foreach ($languages as $language) { ?>
+										<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+											<textarea name="moneymaker2_header_alert_text[<?php echo $language['language_id']; ?>]" rows="2" class="form-control"><?php echo isset($moneymaker2_header_alert_text[$language['language_id']]) ? $moneymaker2_header_alert_text[$language['language_id']] : ''; ?></textarea>
+											<span class="input-group-addon"><span class="btn btn-sm btn-default showeditor"><i class="fa fa-pencil"></i></span></span>
+										</div>
+										<?php } ?>
+										<p class="text-right"><small><?php echo $entry_showeditor_help; ?></small></p>
+									</div>
+								</div>
+							</fieldset>
+
+							<fieldset >
 								<legend><?php echo $entry_top_menu; ?></legend>
 								<div class="form-group">
 									<label class="col-sm-2 control-label"><?php echo $entry_header_strip_expanded; ?></label>
@@ -1117,7 +1176,7 @@ fieldset.successively legend small.text-muted {
 									<div class="col-sm-3">
 										<input type="text" name="moneymaker2_header_strip_bg_color" value="<?php echo $moneymaker2_header_strip_bg_color; ?>"  class="form-control colorpicker" />
 									</div>
-									<label class="col-sm-offset-1 col-sm-2 control-label" for="moneymaker2_header_strip_bg_transparency"><?php echo $entry_transparency; ?></label>
+									<label class="col-sm-offset-1 col-sm-2 control-label" for="moneymaker2_header_strip_bg_transparency"><?php echo $entry_opacity; ?></label>
 									<div class="col-sm-3">
 										<input class="bs-slider" name="moneymaker2_header_strip_bg_transparency" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="<?php echo $moneymaker2_header_strip_bg_transparency; ?>" data-slider-ticks="[1, 50, 100]" data-slider-ticks-snap-bounds="1" data-slider-ticks-labels='["1%", "50%", "100%"]' />
 									</div>
@@ -1591,8 +1650,13 @@ fieldset.successively legend small.text-muted {
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-sm-2 control-label"><?php echo $entry_header_categories_showparents; ?></label>
+									<div class="col-sm-4">
+										<label class="radio-inline"><input type="radio" name="moneymaker2_header_categories_panel_hideparents" value="0" <?php if (!$moneymaker2_header_categories_panel_hideparents) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+										<label class="radio-inline"><input type="radio" name="moneymaker2_header_categories_panel_hideparents" value="1" <?php if ($moneymaker2_header_categories_panel_hideparents) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+									</div>
 									<label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_common_categories_icons_help; ?>"><?php echo $entry_common_custom_icons; ?></span></label>
-									<div class="col-sm-10">
+									<div class="col-sm-4">
 										<label class="radio-inline"><input type="radio" name="moneymaker2_header_categories_panel_icons" value="1" <?php if ($moneymaker2_header_categories_panel_icons) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
 										<label class="radio-inline"><input type="radio" name="moneymaker2_header_categories_panel_icons" value="0" <?php if (!$moneymaker2_header_categories_panel_icons) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
 									</div>
@@ -1602,7 +1666,7 @@ fieldset.successively legend small.text-muted {
 									<div class="col-sm-3">
 										<input type="text" name="moneymaker2_header_categorystrip_bg_color" value="<?php echo $moneymaker2_header_categorystrip_bg_color; ?>"  class="form-control colorpicker" />
 									</div>
-									<label class="col-sm-offset-1 col-sm-2 control-label" for="moneymaker2_header_categorystrip_bg_transparency"><?php echo $entry_transparency; ?></label>
+									<label class="col-sm-offset-1 col-sm-2 control-label" for="moneymaker2_header_categorystrip_bg_transparency"><?php echo $entry_opacity; ?></label>
 									<div class="col-sm-3">
 										<input class="bs-slider" name="moneymaker2_header_categorystrip_bg_transparency" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="<?php echo $moneymaker2_header_categorystrip_bg_transparency; ?>" data-slider-ticks="[1, 50, 100]" data-slider-ticks-snap-bounds="1" data-slider-ticks-labels='["1%", "50%", "100%"]' />
 									</div>
@@ -1841,6 +1905,77 @@ fieldset.successively legend small.text-muted {
 												</div>
 											</div>
 											<?php $header_panelbanner_row++; ?>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend><span class="text-muted"><?php echo $entry_categories_panel; ?> > <?php echo $entry_links; ?> ></span> <?php echo $button_add; ?></legend>
+								<div class="row" id="vtab-header_panellinks">
+									<div class="col-sm-2">
+										<ul class="nav nav-pills nav-stacked" id="header_panellinks">
+											<?php $header_panellink_row = 1; ?>
+											<?php foreach ($moneymaker2_header_panellinks as $value) { ?>
+											<li><a href="#tab-hpanellink<?php echo $header_panellink_row; ?>" data-toggle="tab" id="link-hpanellink<?php echo $header_panellink_row; ?>"><i class="fa fa-minus-circle" onclick="$('a[href=\'#tab-hpanellink<?php echo $header_panellink_row; ?>\']').parent().remove(); $('#tab-hpanellink<?php echo $header_panellink_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>"></i> <?php echo $tab_data; ?>&nbsp;#<?php echo $header_panellink_row; ?></a></li>
+											<?php $header_panellink_row++; ?>
+											<?php } ?>
+											<li>
+												<button type="button" onclick="addHeaderPanelLink();" class="btn btn-success form-control"><i class="fa fa-plus-circle"></i> <?php echo $button_add; ?></button>
+											</li>
+										</ul>
+									</div>
+									<div class="col-sm-10">
+										<div class="tab-content">
+											<?php $header_panellink_row = 1; ?>
+											<?php foreach ($moneymaker2_header_panellinks as $value) { ?>
+											<div class="tab-pane" id="tab-hpanellink<?php echo $header_panellink_row; ?>">
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<p><h4><?php echo $tab_data; ?> #<?php echo $header_panellink_row; ?></h4></p>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $entry_icon; ?></label>
+													<div class="col-sm-5">
+														<?php $first = true; ?>
+														<?php for ($j = 0; $j < count($moneymaker2_fa_icons); $j++) { ?><?php if ($value['icon'] == $moneymaker2_fa_icons[$j]) { ?><button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#iconsModal" data-setting-name="moneymaker2_header_panellinks[<?php echo $header_panellink_row; ?>][icon]"><i class="fa fa-<?php echo $moneymaker2_fa_icons[$j]; ?>"></i> <span><?php echo $moneymaker2_fa_icons[$j]; ?></span></button><input type="hidden" name="moneymaker2_header_panellinks[<?php echo $header_panellink_row; ?>][icon]" value="<?php echo $moneymaker2_fa_icons[$j]; ?>" /><?php $first = false; ?><?php } ?><?php if (!$first) break; ?><?php } ?>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $entry_caption; ?></label>
+													<div class="col-sm-10">
+														<?php foreach ($languages as $language) { ?>
+														<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+															<input type="text" name="moneymaker2_header_panellinks[<?php echo $header_panellink_row; ?>][caption][<?php echo $language['language_id']; ?>]" value="<?php echo isset($value['caption'][$language['language_id']]) ? $value['caption'][$language['language_id']] : ''; ?>" class="form-control">
+														</div>
+														<?php } ?>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $button_link; ?></label>
+													<div class="col-sm-10">
+														<input type="text" name="moneymaker2_header_panellinks[<?php echo $header_panellink_row; ?>][link]" value="<?php echo isset($value['link']) ? $value['link'] : ''; ?>" class="form-control">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $button_link; ?> (<b class="lowercase"><?php echo $entry_multilanguage; ?></b>)</label>
+													<div class="col-sm-10">
+														<?php foreach ($languages as $language) { ?>
+														<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+															<input type="text" name="moneymaker2_header_panellinks[<?php echo $header_panellink_row; ?>][multilink][<?php echo $language['language_id']; ?>]" value="<?php echo isset($value['multilink'][$language['language_id']]) ? $value['multilink'][$language['language_id']] : ''; ?>" placeholder="<?php echo $entry_optional; ?>" class="form-control">
+														</div>
+														<?php } ?>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $entry_sort_order; ?></label>
+													<div class="col-sm-10">
+														<input type="number" min="0" name="moneymaker2_header_panellinks[<?php echo $header_panellink_row; ?>][sort_order]" value="<?php echo isset($value['sort_order']) ? $value['sort_order'] : ''; ?>" placeholder="<?php echo $entry_optional; ?>" class="form-control">
+													</div>
+												</div>
+											</div>
+											<?php $header_panellink_row++; ?>
 											<?php } ?>
 										</div>
 									</div>
@@ -2251,10 +2386,17 @@ fieldset.successively legend small.text-muted {
 										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_metatitles_enabled" value="1" <?php if ($moneymaker2_catalog_categories_metatitles_enabled) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
 										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_metatitles_enabled" value="0" <?php if (!$moneymaker2_catalog_categories_metatitles_enabled) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
 									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-sm-2 control-label"><?php echo $entry_catalog_categories_display_image; ?></label>
 									<div class="col-sm-4">
 										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_images_hide" value="0" <?php if (!$moneymaker2_catalog_categories_images_hide) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
 										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_images_hide" value="1" <?php if ($moneymaker2_catalog_categories_images_hide) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+									</div>
+									<label class="col-sm-2 control-label"><?php echo $entry_catalog_categories_image_round; ?></label>
+									<div class="col-sm-4">
+										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_images_round" value="1" <?php if ($moneymaker2_catalog_categories_images_round) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_images_round" value="0" <?php if (!$moneymaker2_catalog_categories_images_round) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
 									</div>
 								</div>
 								<div class="form-group">
@@ -2284,6 +2426,120 @@ fieldset.successively legend small.text-muted {
 									</div>
 								</div>
 							</fieldset>
+
+							<fieldset>
+								<legend><?php echo $entry_catalog_categories_advantages; ?></legend>
+								<div class="form-group margin-top">
+									<p class="col-sm-12"><?php echo $entry_catalog_categories_advantages_help; ?><br /></p>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><?php echo $text_enabled; ?></label>
+									<div class="col-sm-4">
+										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_advantages_enabled" value="1" <?php if ($moneymaker2_catalog_categories_advantages_enabled) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+										<label class="radio-inline"><input type="radio" name="moneymaker2_catalog_categories_advantages_enabled" value="0" <?php if (!$moneymaker2_catalog_categories_advantages_enabled) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend><span class="text-muted"><?php echo $entry_catalog_categories_advantages; ?> ></span> <?php echo $button_add; ?></legend>
+								<div class="form-group margin-top">
+									<p class="col-sm-12"><?php echo $entry_catalog_categories_advantages_add_help; ?><br /></p>
+								</div>
+								<div class="row" id="vtab-categories_advantages">
+									<div class="col-sm-2">
+										<ul class="nav nav-pills nav-stacked" id="categories_advantages">
+											<?php $categories_advantage_row = 1; ?>
+											<?php foreach ($moneymaker2_categories_advantages as $value) { ?>
+											<li><a href="#tab-cadvantage<?php echo $categories_advantage_row; ?>" data-toggle="tab" id="link-cadvantage<?php echo $categories_advantage_row; ?>"><i class="fa fa-minus-circle" onclick="$('a[href=\'#tab-cadvantage<?php echo $categories_advantage_row; ?>\']').parent().remove(); $('#tab-cadvantage<?php echo $categories_advantage_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>"></i> <?php echo $tab_data; ?>&nbsp;#<?php echo $categories_advantage_row; ?></a></li>
+											<?php $categories_advantage_row++; ?>
+											<?php } ?>
+											<li>
+												<button type="button" onclick="addCategoriesAdvantage();" class="btn btn-success form-control"><i class="fa fa-plus-circle"></i> <?php echo $button_add; ?></button>
+											</li>
+										</ul>
+									</div>
+									<div class="col-sm-10">
+										<div class="tab-content">
+											<?php $categories_advantage_row = 1; ?>
+											<?php foreach ($moneymaker2_categories_advantages as $value) { ?>
+											<div class="tab-pane" id="tab-cadvantage<?php echo $categories_advantage_row; ?>">
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<p><h4><?php echo $tab_data; ?> #<?php echo $categories_advantage_row; ?></h4></p>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $entry_icon; ?></label>
+													<div class="col-sm-5">
+														<?php $first = true; ?>
+														<?php for ($j = 0; $j < count($moneymaker2_fa_icons); $j++) { ?><?php if ($value['icon'] == $moneymaker2_fa_icons[$j]) { ?><button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#iconsModal" data-setting-name="moneymaker2_categories_advantages[<?php echo $categories_advantage_row; ?>][icon]"><i class="fa fa-<?php echo $moneymaker2_fa_icons[$j]; ?>"></i> <span><?php echo $moneymaker2_fa_icons[$j]; ?></span></button><input type="hidden" name="moneymaker2_categories_advantages[<?php echo $categories_advantage_row; ?>][icon]" value="<?php echo $moneymaker2_fa_icons[$j]; ?>" /><?php $first = false; ?><?php } ?><?php if (!$first) break; ?><?php } ?>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $entry_categories; ?></label>
+													<div class="col-sm-10">
+														<div class="well well-sm">
+															<input type="hidden" name="moneymaker2_categories_advantages[<?php echo $categories_advantage_row; ?>][categories]" value="<?php echo ':'.implode('::',$moneymaker2_categories_advantages[$categories_advantage_row-1]['categories']).':'; ?>" />
+															<?php foreach ($categories as $category) { ?>
+															<div class="checkbox">
+																<label onclick="passCheckboxes($(this))">
+																	<?php if (in_array($category['category_id'], $value['categories'])) { ?>
+																	<div class="btn btn-sm btn-default active" data-value="<?php echo $category['category_id']; ?>"><i class="fa fa-fw fa-check"></i></div> <?php echo $category['name']; ?>
+																	<?php } else { ?>
+																	<div class="btn btn-sm btn-default" data-value="<?php echo $category['category_id']; ?>"><i class="fa fa-fw"></i></div> <?php echo $category['name']; ?>
+																	<?php } ?>
+																</label>
+															</div>
+															<?php } ?>
+														</div>
+														<a onclick="selectCheckboxes($(this))"><?php echo $text_select_all; ?></a> / <a onclick="unselectCheckboxes($(this))"><?php echo $text_unselect_all; ?></a>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $entry_header; ?></label>
+													<div class="col-sm-10">
+														<?php foreach ($languages as $language) { ?>
+														<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+															<input type="text" name="moneymaker2_categories_advantages[<?php echo $categories_advantage_row; ?>][name][<?php echo $language['language_id']; ?>]" value="<?php echo isset($value['name'][$language['language_id']]) ? $value['name'][$language['language_id']] : ''; ?>" class="form-control">
+														</div>
+														<?php } ?>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="moneymaker2_categories_advantages_link<?php echo $categories_advantage_row; ?>"><?php echo $button_link; ?></label>
+													<div class="col-sm-10">
+														<select name="moneymaker2_categories_advantages[<?php echo $categories_advantage_row; ?>][link]" class="form-control">
+															<option value="0"><?php echo $text_select ?></option>
+															<?php foreach ($informations as $information) { ?>
+															<option value="<?php echo $information['information_id']; ?>" <?php if ($information['information_id'] == $value['link']) { ?>selected="selected"<?php } ?>><?php echo $information['title'] ?></option>
+															<?php } ?>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 control-label"><?php echo $entry_style; ?></label>
+													<div class="col-sm-10">
+														<div class="input-group">
+															<div class="input-group-btn">
+																<button type="button" class="btn btn-default" data-toggle="modal" data-target="#stylesModal"><i class="fa fa-search"></i> <?php echo $button_view; ?></button>
+															</div>
+															<select name="moneymaker2_categories_advantages[<?php echo $categories_advantage_row; ?>][style]" class="form-control">
+																<?php foreach ($moneymaker2_banners_styles as $moneymaker2_advantages_style) { ?>
+																<?php ($moneymaker2_advantages_style ==  $value['style']) ? $active = 'selected' : $active=''; ?>
+																<option value="<?php echo $moneymaker2_advantages_style; ?>" <?php echo $active; ?>><?php echo $moneymaker2_advantages_style; ?></option>
+																<?php } ?>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<?php $categories_advantage_row++; ?>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+
 							<fieldset>
 								<legend><?php echo $entry_products_options; ?></legend>
 								<div class="form-group">
@@ -2454,7 +2710,7 @@ fieldset.successively legend small.text-muted {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label"><?php echo $entry_display_map; ?></label>
+									<label class="col-sm-2 control-label"><?php echo $entry_display_map; ?> Google</label>
 									<div class="col-sm-4">
 										<select name="moneymaker2_catalog_contacts_map" class="form-control">
 											<?php if ($moneymaker2_catalog_contacts_map) { ?>
@@ -2466,15 +2722,34 @@ fieldset.successively legend small.text-muted {
 											<?php } ?>
 										</select>
 									</div>
-									<label class="col-sm-2 control-label"><?php echo $entry_address; ?></label>
-									<div class="col-sm-4">
-										<p class="paddingtop"><?php echo $entry_catalog_contacts_map_help; ?></p>
+									<div class="col-sm-6">
+										<p class="paddingtop"><small><?php echo $entry_catalog_contacts_map_help; ?></small></p>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label"><?php echo $entry_catalog_contacts_map_key; ?></label>
-									<div class="col-sm-10">
-										<input type="text" name="moneymaker2_catalog_contacts_map_key" value="<?php echo isset($moneymaker2_catalog_contacts_map_key) ? $moneymaker2_catalog_contacts_map_key : ''; ?>" placeholder="<?php echo $entry_optional; ?>" class="form-control"><p class="paddingtop"><small><?php echo $entry_catalog_contacts_map_key_help; ?></small></p>
+									<div class="col-sm-4">
+										<input type="text" name="moneymaker2_catalog_contacts_map_key" value="<?php echo isset($moneymaker2_catalog_contacts_map_key) ? $moneymaker2_catalog_contacts_map_key : ''; ?>" placeholder="<?php echo $entry_optional; ?>" class="form-control">
+									</div>
+									<div class="col-sm-6">
+										<p><small><?php echo $entry_catalog_contacts_map_key_help; ?></small></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"><?php echo $entry_display_map; ?> (<?php echo $entry_code; ?>)</label>
+									<div class="col-sm-4">
+										<select name="moneymaker2_catalog_contacts_map_custom" class="form-control">
+											<?php if ($moneymaker2_catalog_contacts_map_custom) { ?>
+											<option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+											<option value="0"><?php echo $text_disabled; ?></option>
+											<?php } else { ?>
+											<option value="1"><?php echo $text_enabled; ?></option>
+											<option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+									<div class="col-sm-6">
+										<input type="text" name="moneymaker2_catalog_contacts_map_custom_code" value="<?php echo isset($moneymaker2_catalog_contacts_map_custom_code) ? $moneymaker2_catalog_contacts_map_custom_code : ''; ?>" placeholder="<?php echo $entry_code; ?>" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
@@ -2950,9 +3225,11 @@ fieldset.successively legend small.text-muted {
 													<div class="col-sm-9">
 														<?php foreach ($languages as $language) { ?>
 														<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
-															<input type="text" name="moneymaker2_product_points_stock_caption[<?php echo $stock_status['stock_status_id']; ?>][<?php echo $language['language_id']; ?>]" value="<?php echo isset($moneymaker2_product_points_stock_caption[$stock_status['stock_status_id']][$language['language_id']]) ? $moneymaker2_product_points_stock_caption[$stock_status['stock_status_id']][$language['language_id']] : ''; ?>" class="form-control" />
+															<textarea name="moneymaker2_product_points_stock_caption[<?php echo $stock_status['stock_status_id']; ?>][<?php echo $language['language_id']; ?>]" rows="2" class="form-control"><?php echo isset($moneymaker2_product_points_stock_caption[$stock_status['stock_status_id']][$language['language_id']]) ? $moneymaker2_product_points_stock_caption[$stock_status['stock_status_id']][$language['language_id']] : ''; ?></textarea>
+															<span class="input-group-addon"><span class="btn btn-sm btn-default showeditor"><i class="fa fa-pencil"></i></span></span>
 														</div>
 														<?php } ?>
+														<p class="text-right"><small><?php echo $entry_showeditor_help; ?></small></p>
 													</div>
 												</div>
 											</div>
@@ -2961,34 +3238,6 @@ fieldset.successively legend small.text-muted {
 									</div>
 								</div>
 							</fieldset>
-							<?php if (false) { ?>
-							<?php foreach ($stock_statuses as $stock_status) { ?>
-							<fieldset>
-								<legend class="text-center"><small><?php echo $stock_status['name']; ?></small></legend>
-								<div class="form-group">
-									<label class="col-sm-2 control-label"><?php echo $entry_icon; ?></label>
-									<div class="col-sm-4">
-										<?php $first = true; ?>
-										<?php for ($j = 0; $j < count($moneymaker2_fa_icons); $j++) { ?><?php if (isset($moneymaker2_product_points_stock_icon[$stock_status['stock_status_id']])&&$moneymaker2_product_points_stock_icon[$stock_status['stock_status_id']] == $moneymaker2_fa_icons[$j]) { ?><button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#iconsModal" data-setting-name="moneymaker2_product_points_stock_icon[<?php echo $stock_status['stock_status_id']; ?>]"><i class="fa fa-<?php echo $moneymaker2_fa_icons[$j]; ?>"></i> <span><?php echo $moneymaker2_fa_icons[$j]; ?></span></button><input type="hidden" name="moneymaker2_product_points_stock_icon[<?php echo $stock_status['stock_status_id']; ?>]" value="<?php echo $moneymaker2_fa_icons[$j]; ?>" /><?php $first = false; ?><?php } ?><?php if (!$first) break; ?><?php } ?><?php if ($first) { ?><button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#iconsModal" data-setting-name="moneymaker2_product_points_stock_icon[<?php echo $stock_status['stock_status_id']; ?>]"><i class="fa"></i> <span>-</span></button><input type="hidden" name="moneymaker2_product_points_stock_icon[<?php echo $stock_status['stock_status_id']; ?>]" value="-" /><?php } ?>
-									</div>
-									<label class="col-sm-2 control-label"><?php echo $entry_color; ?></label>
-									<div class="col-sm-3">
-										<input type="text" name="moneymaker2_product_points_stock_color[<?php echo $stock_status['stock_status_id']; ?>]" value="<?php echo $moneymaker2_product_points_stock_color[$stock_status['stock_status_id']]; ?>"  class="form-control colorpicker" />
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-2 control-label"><?php echo $entry_caption; ?></label>
-									<div class="col-sm-9">
-										<?php foreach ($languages as $language) { ?>
-										<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
-											<input type="text" name="moneymaker2_product_points_stock_caption[<?php echo $stock_status['stock_status_id']; ?>][<?php echo $language['language_id']; ?>]" value="<?php echo isset($moneymaker2_product_points_stock_caption[$stock_status['stock_status_id']][$language['language_id']]) ? $moneymaker2_product_points_stock_caption[$stock_status['stock_status_id']][$language['language_id']] : ''; ?>" class="form-control" />
-										</div>
-										<?php } ?>
-									</div>
-								</div>
-							</fieldset>
-							<?php } ?>
-							<?php } ?>
 							<fieldset>
 								<legend><span class="text-muted"><?php echo $entry_main_points; ?> ></span> <?php echo $entry_manufacturer; ?></legend>
 								<div class="form-group">
@@ -3802,6 +4051,8 @@ fieldset.successively legend small.text-muted {
 											<li><a href="#tab-modules_maskedinput" data-toggle="tab"> <?php echo $entry_input_mask; ?></a></li>
 											<li><a href="#tab-modules_quickorder" data-toggle="tab"> <?php echo $entry_tab_quickorder; ?></a></li>
 											<li><a href="#tab-modules_callback" data-toggle="tab"> <?php echo $entry_tab_callback; ?></a></li>
+											<li><a href="#tab-modules_newsletter" data-toggle="tab"> <?php echo $entry_tab_newsletter; ?></a></li>
+											<li><a href="#tab-modules_popup" data-toggle="tab"> <?php echo $entry_tab_popup; ?></a></li>
 										</ul>
 									</div>
 									<div class="col-sm-10">
@@ -4015,7 +4266,7 @@ fieldset.successively legend small.text-muted {
 																<?php } ?>
 															</select>
 														</div>
-														<label class="col-sm-2 control-label" for="moneymaker2_modules_stickers_transparency"><?php echo $entry_transparency; ?></label>
+														<label class="col-sm-2 control-label" for="moneymaker2_modules_stickers_transparency"><?php echo $entry_opacity; ?></label>
 														<div class="col-sm-4">
 															<select name="moneymaker2_modules_stickers_transparency" id="moneymaker2_modules_stickers_transparency" class="form-control">
 																<?php for ($j = 10; $j <= 95; $j=$j+5) {
@@ -4606,6 +4857,26 @@ fieldset.successively legend small.text-muted {
 															<?php } ?>
 														</div>
 													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><span data-toggle="tooltip" title="<?php echo $entry_modules_quickorder_goal_google_help; ?>"><?php echo $entry_modules_quickorder_goal_google; ?></span></label>
+														<div class="col-sm-4">
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_quickorder_goal_google" value="1" <?php if ($moneymaker2_modules_quickorder_goal_google) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_quickorder_goal_google" value="0" <?php if (!$moneymaker2_modules_quickorder_goal_google) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><span data-toggle="tooltip" title="<?php echo $entry_modules_quickorder_goal_yandex_help; ?>"><?php echo $entry_modules_quickorder_goal_yandex; ?></span></label>
+														<div class="col-sm-4">
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_quickorder_goal_yandex" value="1" <?php if ($moneymaker2_modules_quickorder_goal_yandex) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_quickorder_goal_yandex" value="0" <?php if (!$moneymaker2_modules_quickorder_goal_yandex) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+														</div>
+														<div class="col-sm-4">
+															<div class="input-group">
+																<span class="input-group-addon">#</span>
+																<input type="text" name="moneymaker2_modules_quickorder_goal_yandex_counter" value="<?php echo isset($moneymaker2_modules_quickorder_goal_yandex_counter) ? $moneymaker2_modules_quickorder_goal_yandex_counter : ''; ?>" placeholder="<?php echo $entry_modules_quickorder_goal_yandex_counter; ?>" class="form-control" />
+															</div>
+														</div>
+													</div>
 												</fieldset>
 											</div>
 
@@ -4652,6 +4923,109 @@ fieldset.successively legend small.text-muted {
 																<input type="text" name="moneymaker2_modules_callback_caption[<?php echo $language['language_id']; ?>]" value="<?php echo isset($moneymaker2_modules_callback_caption[$language['language_id']]) ? $moneymaker2_modules_callback_caption[$language['language_id']] : ''; ?>" class="form-control" />
 															</div>
 															<?php } ?>
+														</div>
+													</div>
+												</fieldset>
+											</div>
+
+											<div class="tab-pane" id="tab-modules_newsletter">
+												<fieldset>
+													<legend><?php echo $entry_tab_newsletter; ?></legend>
+													<div class="form-group margin-top">
+														<p class="col-sm-12"><?php echo $entry_modules_newsletter_help; ?><br /></p>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $text_enabled; ?></label>
+														<div class="col-sm-6">
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_newsletter_enabled" value="1" <?php if ($moneymaker2_modules_newsletter_enabled) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_newsletter_enabled" value="0" <?php if (!$moneymaker2_modules_newsletter_enabled) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $entry_header; ?></label>
+														<div class="col-sm-8">
+															<?php foreach ($languages as $language) { ?>
+															<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+																<input type="text" name="moneymaker2_modules_newsletter_header[<?php echo $language['language_id']; ?>]" value="<?php echo isset($moneymaker2_modules_newsletter_header[$language['language_id']]) ? $moneymaker2_modules_newsletter_header[$language['language_id']] : ''; ?>" class="form-control" />
+															</div>
+															<?php } ?>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $entry_caption; ?></label>
+														<div class="col-sm-8">
+															<?php foreach ($languages as $language) { ?>
+															<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+																<textarea name="moneymaker2_modules_newsletter_caption[<?php echo $language['language_id']; ?>]" rows="2" class="form-control"><?php echo isset($moneymaker2_modules_newsletter_caption[$language['language_id']]) ? $moneymaker2_modules_newsletter_caption[$language['language_id']] : ''; ?></textarea>
+																<span class="input-group-addon"><span class="btn btn-sm btn-default showeditor"><i class="fa fa-pencil"></i></span></span>
+															</div>
+															<?php } ?>
+															<p class="text-right"><small><?php echo $entry_showeditor_help; ?></small></p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $entry_display_image; ?></label>
+														<div class="col-sm-8">
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_newsletter_image" value="1" <?php if ($moneymaker2_modules_newsletter_image) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_newsletter_image" value="0" <?php if (!$moneymaker2_modules_newsletter_image) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $entry_image; ?></label>
+														<div class="col-sm-8">
+															<a href="" id="moneymaker2_modules_newsletter_image_src_thumb" data-toggle="image" class="img-thumbnail"><img src="<?php echo $moneymaker2_modules_newsletter_thumb; ?>" alt="" data-placeholder="<?php echo $placeholder; ?>"  /></a><input type="hidden" name="moneymaker2_modules_newsletter_image_src" value="<?php echo $moneymaker2_modules_newsletter_image_src; ?>" id="moneymaker2_modules_newsletter_image_src_input" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $entry_image_size; ?></label>
+														<div class="col-sm-4">
+															<div class="input-group">
+																<input type="number" min="1" name="moneymaker2_modules_newsletter_thumbs_width" value="<?php echo $moneymaker2_modules_newsletter_thumbs_width; ?>" class="form-control">
+																<span class="input-group-addon"><?php echo $entry_px; ?></span>
+															</div><p class="text-center"><small><?php echo $entry_width; ?></small></p>
+														</div>
+														<div class="col-sm-4">
+															<div class="input-group">
+																<input type="number" min="1" name="moneymaker2_modules_newsletter_thumbs_height" value="<?php echo $moneymaker2_modules_newsletter_thumbs_height; ?>" class="form-control">
+																<span class="input-group-addon"><?php echo $entry_px; ?></span>
+															</div><p class="text-center"><small><?php echo $entry_height; ?></small></p>
+														</div>
+													</div>
+													
+												</fieldset>
+											</div>
+											<div class="tab-pane" id="tab-modules_popup">
+												<fieldset>
+													<legend><?php echo $entry_tab_popup; ?></legend>
+													<div class="form-group margin-top">
+														<p class="col-sm-12"><?php echo $entry_modules_popup_help; ?><br /></p>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $text_enabled; ?></label>
+														<div class="col-sm-6">
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_popup" value="1" <?php if ($moneymaker2_modules_popup) { ?>checked="checked"<?php } ?> /> <?php echo $text_yes; ?></label>
+															<label class="radio-inline"><input type="radio" name="moneymaker2_modules_popup" value="0" <?php if (!$moneymaker2_modules_popup) { ?>checked="checked"<?php } ?> /> <?php echo $text_no; ?></label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label"><?php echo $button_link; ?></label>
+														<div class="col-sm-8">
+															<select name="moneymaker2_modules_popup_link" class="form-control">
+																<option value="0"><?php echo $text_select ?></option>
+																<option value="newsletter" <?php if ($moneymaker2_modules_popup_link=="newsletter") { ?>selected="selected"<?php } ?>><?php echo $entry_tab_modules; ?> > <?php echo $entry_tab_newsletter; ?></option>
+																<?php foreach ($informations as $information) { ?>
+																<option value="<?php echo $information['information_id']; ?>" <?php if ($information['information_id'] == $moneymaker2_modules_popup_link) { ?>selected="selected"<?php } ?>><?php echo $information['title'] ?></option>
+																<?php } ?>
+															</select>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label" for="moneymaker2_modules_popup_limit"><?php echo $entry_limit; ?></label>
+														<div class="col-sm-8">
+															<div class="input-group">
+																<input type="number" min="1" name="moneymaker2_modules_popup_limit" value="<?php echo $moneymaker2_modules_popup_limit; ?>"  id="moneymaker2_modules_popup_limit" class="form-control">
+																<span class="input-group-addon"><span class="lowercase"><?php echo $entry_days; ?></span></span>
+															</div>
 														</div>
 													</div>
 												</fieldset>
@@ -4987,6 +5361,7 @@ fieldset.successively legend small.text-muted {
 		$('#header_contacts a:first').tab('show');
 		$('#header_banners a:first').tab('show');
 		$('#header_panelbanners a:first').tab('show');
+		$('#header_panellinks a:first').tab('show');
 		$('#header_links a:first').tab('show');
 		$('#footer_contacts a:first').tab('show');
 		$('#footer_links a:first').tab('show');
@@ -4995,6 +5370,7 @@ fieldset.successively legend small.text-muted {
 		$('#product_stock_points a:first').tab('show');
 		$('#product_tabs a:first').tab('show');
 		$('#modules_promos a:first').tab('show');
+		$('#categories_advantages a:first').tab('show');
 		$('#catalog_compare_charts a:first').tab('show');
 		$('#modules a:first').tab('show');
 
@@ -5323,6 +5699,62 @@ fieldset.successively legend small.text-muted {
 			$('#header_links li .btn-success').parent().before('<li><a href="#tab-hlink' + header_link_row + '" data-toggle="tab" id="link-hlink' + header_link_row + '"><i class="fa fa-minus-circle" onclick="$(\'#link-hlink' + header_link_row + '\').parent().remove(); $(\'#tab-hlink' + header_link_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>"></i> <?php echo $tab_data; ?>&nbsp;#' + header_link_row + '</a></li>');
 			$('#link-hlink' + header_link_row).trigger('click');
 			header_link_row++;
+		}
+
+		var header_panellink_row = <?php echo $header_panellink_row; ?>;
+		function addHeaderPanelLink() {
+			html = '<div class="tab-pane active" id="tab-hpanellink' + header_panellink_row + '">';
+			html += '<div class="form-group">';
+			html += '<div class="col-sm-offset-2 col-sm-10">';
+			html += '<p><h4><?php echo $tab_data; ?> #' + header_panellink_row + '</h4></p>';
+			html += '</div>';
+			html += '</div>';
+
+			html += '<div class="form-group">';
+			html += '<label class="col-sm-2 control-label"><?php echo $entry_icon; ?></label>';
+			html += '<div class="col-sm-5">';
+			html += '<button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#iconsModal" data-setting-name="moneymaker2_header_panellinks[' + header_panellink_row + '][icon]"><i class="fa fa-"></i> <span>-</span></button>';
+			html += '<input type="hidden" name="moneymaker2_header_panellinks[' + header_panellink_row + '][icon]" value="-" />';
+			html += '</div>';
+			html += '</div>';
+			html += '<div class="form-group">';
+			html += '<label class="col-sm-2 control-label"><?php echo $entry_caption; ?></label>';
+			html += '<div class="col-sm-10">';
+			<?php foreach ($languages as $language) { ?>
+			html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>';
+			html += '<input type="text" name="moneymaker2_header_panellinks[' + header_panellink_row + '][caption][<?php echo $language['language_id']; ?>]" value="" class="form-control">';
+			html += '</div>';
+			<?php } ?>
+			html += '</div>';
+			html += '</div>';
+			html += '<div class="form-group">';
+			html += '<label class="col-sm-2 control-label"><?php echo $button_link; ?></label>';
+			html += '<div class="col-sm-10">';
+			html += '<input type="text" name="moneymaker2_header_panellinks[' + header_panellink_row + '][link]" value="" class="form-control">';
+			html += '</div>';
+			html += '</div>';
+			html += '<div class="form-group">';
+			html += '<label class="col-sm-2 control-label"><?php echo $button_link; ?> (<b class="lowercase"><?php echo $entry_multilanguage; ?></b>)</label>';
+			html += '<div class="col-sm-10">';
+			<?php foreach ($languages as $language) { ?>
+			html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>';
+			html += '<input type="text" name="moneymaker2_header_panellinks[' + header_panellink_row + '][multilink][<?php echo $language['language_id']; ?>]" value="" placeholder="<?php echo $entry_optional; ?>" class="form-control">';
+			html += '</div>';
+			<?php } ?>
+			html += '</div>';
+			html += '</div>';
+			html += '<div class="form-group">';
+			html += '<label class="col-sm-2 control-label" for="moneymaker2_header_panellinks_sort_order' + header_panellink_row + '"><?php echo $entry_sort_order; ?></label>';
+			html += '<div class="col-sm-10">';
+			html += '<input type="number" min="0" name="moneymaker2_header_panellinks[' + header_panellink_row + '][sort_order]" value="' + header_panellink_row + '" placeholder="<?php echo $entry_optional; ?>" id="moneymaker2_header_panellinks_sort_order' + header_panellink_row + '" class="form-control">';
+			html += '</div>';
+			html += '</div>';
+
+			html += '</div>';
+			$('#vtab-header_panellinks .tab-content').append(html);
+			$('#header_panellinks li .btn-success').parent().before('<li><a href="#tab-hpanellink' + header_panellink_row + '" data-toggle="tab" id="link-hpanellink' + header_panellink_row + '"><i class="fa fa-minus-circle" onclick="$(\'#link-hpanellink' + header_panellink_row + '\').parent().remove(); $(\'#tab-hpanellink' + header_panellink_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>"></i> <?php echo $tab_data; ?>&nbsp;#' + header_panellink_row + '</a></li>');
+			$('#link-hpanellink' + header_panellink_row).trigger('click');
+			header_panellink_row++;
 		}
 
 		var footer_contact_row = <?php echo $footer_contact_row; ?>;
@@ -5718,6 +6150,90 @@ fieldset.successively legend small.text-muted {
 
 			modules_promo_row++;
 		}
+
+	var categories_advantage_row = <?php echo $categories_advantage_row; ?>;
+	function addCategoriesAdvantage() {
+		html = '<div class="tab-pane active" id="tab-cadvantage' + categories_advantage_row + '">';
+		html += '<div class="form-group">';
+		html += '<div class="col-sm-offset-2 col-sm-10">';
+		html += '<p><h4><?php echo $tab_data; ?> #' + categories_advantage_row + '</h4></p>';
+		html += '</div>';
+		html += '</div>';
+
+		html += '<div class="form-group">';
+		html += '<label class="col-sm-2 control-label"><?php echo $entry_icon; ?></label>';
+		html += '<div class="col-sm-5">';
+		html += '<button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#iconsModal" data-setting-name="moneymaker2_categories_advantages[' + categories_advantage_row + '][icon]"><i class="fa fa-"></i> <span>-</span></button>';
+		html += '<input type="hidden" name="moneymaker2_categories_advantages[' + categories_advantage_row + '][icon]" value="-" />';
+		html += '</div>';
+		html += '</div>';
+
+		html += '<div class="form-group">';
+		html += '<label class="col-sm-2 control-label"><?php echo $entry_categories; ?></label>';
+		html += '<div class="col-sm-10">';
+		html += '<div class="well well-sm">';
+		html += '<input type="hidden" name="moneymaker2_categories_advantages[' + categories_advantage_row + '][categories]" value="" />';
+	<?php foreach ($categories as $category) { ?>
+			html += '<div class="checkbox">';
+			html += '<label onclick="passCheckboxes($(this))">';
+			html += '<div class="btn btn-sm btn-default" data-value="<?php echo $category['category_id']; ?>"><i class="fa fa-fw"></i></div> <?php echo addslashes($category['name']); ?>';
+			html += '</label>';
+			html += '</div>';
+		<?php } ?>
+		html += '</div>';
+		html += '<a onclick="selectCheckboxes($(this))"><?php echo $text_select_all; ?></a> / <a onclick="unselectCheckboxes($(this))"><?php echo $text_unselect_all; ?></a>';
+		html += '</div>';
+		html += '</div>';
+
+		html += '<div class="form-group">';
+		html += '<label class="col-sm-2 control-label"><?php echo $entry_header; ?></label>';
+		html += '<div class="col-sm-10">';
+	<?php foreach ($languages as $language) { ?>
+			html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>';
+			html += '<input type="text" name="moneymaker2_categories_advantages[' + categories_advantage_row + '][name][<?php echo $language['language_id']; ?>]" value="" class="form-control">';
+			html += '</div>';
+		<?php } ?>
+		html += '</div>';
+		html += '</div>';
+
+		html += '<div class="form-group">';
+		html += '<label class="col-sm-2 control-label" for="moneymaker2_categories_advantages_link' + categories_advantage_row + '"><?php echo $button_link; ?></label>';
+		html += '<div class="col-sm-10">';
+		html += '<select name="moneymaker2_categories_advantages[' + categories_advantage_row + '][link]" class="form-control">';
+		html += '<option value="0" selected><?php echo $text_select ?></option>';
+	<?php foreach ($informations as $information) { ?>
+			html += '<option value="<?php echo $information['information_id']; ?>"><?php echo addslashes($information['title']); ?></option>';
+		<?php } ?>
+		html += '</select>';
+		html += '</div>';
+		html += '</div>';
+
+		html += '<div class="form-group">';
+		html += '<label class="col-sm-2 control-label"><?php echo $entry_style; ?></label>';
+		html += '<div class="col-sm-10">';
+		html += '<div class="input-group">';
+		html += '<div class="input-group-btn">';
+		html += '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#stylesModal"><i class="fa fa-search"></i> <?php echo $button_view; ?></button>';
+		html += '</div>';
+		html += '<select name="moneymaker2_categories_advantages[' + categories_advantage_row + '][style]" class="form-control">';
+	<?php foreach ($moneymaker2_banners_styles as $key => $value) { ?>
+			html += '<option value="<?php echo $value; ?>" <?php if ($key == 0) { ?>selected<?php } ?>><?php echo $value; ?></option>';
+		<?php } ?>
+		html += '</select>';
+		html += '</div>';
+		html += '</div>';
+		html += '</div>';
+		html += '</div>';
+		$('#vtab-categories_advantages .tab-content').append(html);
+		$('#categories_advantages li .btn-success').parent().before('<li><a href="#tab-cadvantage' + categories_advantage_row + '" data-toggle="tab" id="link-cadvantage' + categories_advantage_row + '"><i class="fa fa-minus-circle" onclick="$(\'#link-cadvantage' + categories_advantage_row + '\').parent().remove(); $(\'#tab-cadvantage' + categories_advantage_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>"></i> <?php echo $tab_data; ?>&nbsp;#' + categories_advantage_row + '</a></li>');
+
+		$('#link-cadvantage' + categories_advantage_row).trigger('click');
+	<?php foreach ($languages as $language) { ?>
+			$('textarea[name="moneymaker2_categories_advantages[' + categories_advantage_row + '][text][<?php echo $language['language_id']; ?>]"').summernote({height: 100});
+		<?php } ?>
+
+		categories_advantage_row++;
+	}
 
 	var catalog_compare_chart_row = <?php echo $catalog_compare_chart_row; ?>;
 	function addCatalogCompareChart() {

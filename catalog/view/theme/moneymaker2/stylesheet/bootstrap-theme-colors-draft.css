@@ -182,3 +182,7 @@ a.thumbnail.active {
 #livesearch_search_results .list-group-item-info {
     background-color: moneymaker2_common_themes_color_lighten_25;
 }
+.catalog-advantage.primary > span.text-left, .catalog-advantage.primary > span.text-right, .catalog-advantage.primary > span.fa-stack > .fa-stack-1x {color: moneymaker2_common_themes_color_primary;}
+.catalog-advantage.primary .advantage-caret-left:before {border-right-color: moneymaker2_common_themes_color_primary;}
+.catalog-advantage.primary .advantage-caret-right:before {border-left-color: moneymaker2_common_themes_color_primary;}
+.catalog-advantage.primary > span.fa-stack:hover > .fa-stack-2x {color: moneymaker2_common_themes_color_primary;}

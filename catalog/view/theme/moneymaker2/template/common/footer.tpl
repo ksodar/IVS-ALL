@@ -97,6 +97,24 @@
           </div>
         <?php } ?>
       <?php } ?>
+
+      <?php if ($moneymaker2_modules_newsletter_enabled) { ?>
+      <div class="col-sm-3">
+        <div class="h5 text-muted"><i class="fa fa-fw fa-envelope-o"></i> <?php echo $moneymaker2_modules_newsletter_header; ?></div>
+        <ul class="list-unstyled">
+          <li><?php echo $moneymaker2_modules_newsletter_caption; ?></li>
+          <li>
+            <div class="input-group input-group-sm">
+              <input type="text" id="newsletteremail" value="<?php echo $moneymaker2_customer_email; ?>" placeholder="<?php echo $text_quickorder_email; ?>" class="form-control">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal" data-order-mode="newsletter" <?php if ($moneymaker2_modules_newsletter_image) { ?>data-order-img-src="<?php echo $moneymaker2_modules_newsletter_image; ?>"<?php } ?> data-order-title="<?php echo $moneymaker2_modules_newsletter_header; ?>"><i class="fa fa-fw fa-angle-right"></i></button>
+          </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <?php } ?>
+
     </div>
   </div>
   <div class="bottom">
@@ -160,22 +178,21 @@
   </div>
 </div>
 
-<?php if ($moneymaker2_modules_quickorder_enabled||$moneymaker2_modules_callback_enabled) { ?>
+<?php if ($moneymaker2_modules_quickorder_enabled||$moneymaker2_modules_callback_enabled||$moneymaker2_modules_newsletter_enabled) { ?>
 <div class="modal fade" id="orderModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <input type="hidden" name="product_id" value="0" />
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
         <p class="modal-title h4 text-center"></p>
-
       </div>
       <div class="modal-body">
         <input type="hidden" name="quantity" value="1">
         <div class="row">
           <div class="col-sm-12">
             <img class="img-responsive center-block" src="image/no_image.png" title="" alt="" />
+            <div class="hidden"></div>
           </div>
         </div>
         <div class="row">
@@ -323,7 +340,7 @@
     }
     <?php } ?>
 
-    <?php if ($moneymaker2_modules_quickorder_enabled||$moneymaker2_modules_callback_enabled) { ?>
+    <?php if ($moneymaker2_modules_quickorder_enabled||$moneymaker2_modules_callback_enabled||$moneymaker2_modules_newsletter_enabled) { ?>
     $('#orderModal').on('hidden.bs.modal', function (event) {
       if (($("#popupModal").data('bs.modal') || {}).isShown) $('#popupModal').modal('hide');
       <?php if (isset($moneymaker2_modules_quickorder_checkout_page)&&$moneymaker2_modules_quickorder_checkout_page) { ?>
@@ -361,31 +378,68 @@
       }
       modal.find('.modal-title.h4').text(title);
       modal.find('.img-responsive').addClass("hidden");
+      modal.find('.img-responsive').parent().find('div').addClass("hidden");
+      $('#quickorderemail').attr("placeholder", "<?php echo $text_quickorder_email_help; ?>");
+      if (img_src!==0&&typeof img_src!=='undefined') {
+        modal.find('.img-responsive').removeClass("hidden");
+        modal.find('.img-responsive').attr("src",img_src);
+      }
       if (mode=="product" || mode=="catalog" || mode=="cart") {
         modal.find('.modal-dialog .form-group.required:first-child').removeClass('hidden');
+        modal.find('.modal-dialog .form-group.required:nth-child(2)').removeClass('hidden');
+        modal.find('.modal-dialog .form-group.optional').removeClass('hidden');
         modal.find('.modal-dialog').removeClass('modal-dialog-callback');
+        modal.find('.modal-dialog').removeClass('modal-dialog-newsletter');
         modal.find('.modal-dialog').addClass('modal-dialog-order');
         modal.find('.modal-title.h4').append(" <small>(" + price + ")</small>");
-        if (img_src!==0) {
-          modal.find('.img-responsive').removeClass("hidden");
-          modal.find('.img-responsive').attr("src",img_src);
-        }
-
-      } else {
+        modal.find('.btn-primary').html('<i class="fa fa-fw fa-flip-horizontal fa-reply-all"></i> <?php echo $text_quickorder_submit; ?>');
+        modal.find('.panel small').html('<?php echo $text_quickorder_help; ?>');
+      } else if (mode=="callback") {
+        modal.find('.modal-dialog .form-group.required:nth-child(2)').removeClass('hidden');
+        modal.find('.modal-dialog .form-group.optional').removeClass('hidden');
         modal.find('.modal-dialog .form-group.required:first-child').addClass('hidden');
         modal.find('.modal-dialog').removeClass('modal-dialog-order');
+        modal.find('.modal-dialog').removeClass('modal-dialog-newsletter');
         modal.find('.modal-dialog').addClass('modal-dialog-callback');
-      }
+        modal.find('.btn-primary').html('<i class="fa fa-fw fa-flip-horizontal fa-reply-all"></i> <?php echo $text_callback_submit; ?>');
+        modal.find('.panel small').html('<?php echo $text_callback_help; ?>');
+      } else {
+        modal.find('.modal-dialog .form-group.required:first-child').removeClass('hidden');
+        modal.find('.modal-dialog .form-group.required:nth-child(2)').addClass('hidden');
+        modal.find('.modal-dialog .form-group.optional').addClass('hidden');
+        modal.find('.modal-dialog').removeClass('modal-dialog-order');
+        modal.find('.modal-dialog').removeClass('modal-dialog-callback');
+        modal.find('.modal-dialog').addClass('modal-dialog-newsletter');
+        $('#quickorderemail').attr("placeholder", "");
+        modal.find('.img-responsive').parent().find('div.hidden').text("<?php echo $moneymaker2_modules_newsletter_caption; ?>");
+        modal.find('.img-responsive').parent().find('div.hidden').removeClass("hidden");
+        if ( $('#newsletteremail').val() ) {
+          modal.find('.modal-dialog #quickorderemail').val( $('#newsletteremail').val() );
+          $('#orderModal').on('shown.bs.modal', function (event) {
+            if (emailValidation( $("#quickorderemail").val() )) {
+              $('#quickorderemail').parent().parent().removeClass('has-error');
+              $("#quickorderemail").addClass('valid');
+              $("#quickorderemail").parent().parent().addClass('has-success has-feedback');
+              $(".quickorderemail.form-control-feedback").removeClass('hidden');
+            } else {
+              $("#quickorderemail").removeClass('valid');
+              $("#quickorderemail").parent().parent().removeClass('has-success has-feedback');
+              $(".quickorderemail.form-control-feedback").addClass('hidden');
+            }
+            $('#orderModal .btn-primary').click();
+          })
 
+        }
+        modal.find('.btn-primary').html('<i class="fa fa-fw fa-flip-horizontal fa-reply-all"></i> <?php echo $text_newsletter_submit; ?>');
+        modal.find('.panel small').html('<?php echo $text_newsletter_help; ?>');
+      }
       modal.find('.panel').removeClass('panel-danger');
       modal.find('.panel').removeClass('panel-success');
       modal.find('.panel').addClass('panel-info');
-      modal.find('.panel small').html('<?php echo $text_quickorder_help; ?>');
       modal.find('.btn-primary').removeClass('btn-success');
       modal.find('.btn-primary').removeAttr('disabled');
-      modal.find('.btn-primary').html('<i class="fa fa-fw fa-flip-horizontal fa-reply-all"></i> <?php echo $button_submit; ?>');
       if ( ((mode=="product")&&($('#cart > ul > li > table').length>0)) || ((mode=="catalog")&&($('#cart > ul > li > table').length>0)) ) {
-        $('<div class="panel panel-default"><div class="panel-heading text-center"><small><?php echo $text_quickorder_cart_items_help; ?><strong2>' + $('#cart-total').text() + '</strong2></small></div></div>').insertAfter($('#orderModal .panel'));
+        $('<div class="panel panel-default"><div class="panel-heading text-center"><small><?php echo $text_quickorder_cart_items_help; ?>' + $('#cart-total').text() + '</small></div></div>').insertAfter($('#orderModal .panel'));
       }
     })
 
@@ -410,12 +464,10 @@
         }
       );
     <?php } ?>
-
     function emailValidation(email) {
       var regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return regexp.test(email);
     }
-
     if (emailValidation( $("#quickorderemail").val() )) {
       $('#quickorderemail').parent().parent().removeClass('has-error');
       $("#quickorderemail").addClass('valid');
@@ -434,7 +486,6 @@
           $(".quickorderemail.form-control-feedback").addClass('hidden');
         }
       });
-
       function initialValidation() {
         $('#orderModal .panel-default').remove();
         <?php if (!$moneymaker2_modules_quickorder_phone_mask_enabled) { ?>
@@ -445,7 +496,7 @@
             $(".quickorderphone.form-control-feedback").removeClass('hidden');
           }
         <?php } ?>
-        if ( ($( "#orderModal .modal-dialog-order" ).length && $("#quickorderemail").hasClass('valid') && $("#quickorderphone").hasClass('valid')) || ($( "#orderModal .modal-dialog-callback" ).length && $("#quickorderphone").hasClass('valid')) ) {
+        if ( ($( "#orderModal .modal-dialog-order" ).length && $("#quickorderemail").hasClass('valid') && $("#quickorderphone").hasClass('valid')) || ($( "#orderModal .modal-dialog-callback" ).length && $("#quickorderphone").hasClass('valid')) || ($( "#orderModal .modal-dialog-newsletter" ).length && $("#quickorderemail").hasClass('valid')) ) {
           $("#orderModal .panel").removeClass('panel-danger');
           $("#orderModal .panel").addClass('panel-info');
           $("#quickordercomment").parent().parent().addClass('has-success has-feedback');
@@ -457,6 +508,9 @@
           if ( $( "#orderModal .modal-dialog-callback" ).length ) {
             addCallback();
           }
+          if ( $( "#orderModal .modal-dialog-newsletter" ).length ) {
+            addSubscriber();
+          }
           if ( $( "#orderModal .modal-dialog-order" ).length ) {
             addQuickOrder();
           }
@@ -465,11 +519,11 @@
           $("#orderModal .panel").addClass('panel-danger');
           $("#orderModal .panel small").html('');
         }
-        if ($( "#orderModal .modal-dialog-order" ).length && !$("#quickorderemail").hasClass('valid')) {
+        if (($( "#orderModal .modal-dialog-order" ).length && !$("#quickorderemail").hasClass('valid'))||($( "#orderModal .modal-dialog-newsletter" ).length && !$("#quickorderemail").hasClass('valid'))) {
           $('#quickorderemail').parent().parent().addClass('has-error');
           $("#orderModal .panel small").html('<?php echo $error_quickorder_email; ?><br />');
         }
-        if (!$("#quickorderphone").hasClass('valid')) {
+        if (!$("#orderModal .modal-dialog-newsletter").length && !$("#quickorderphone").hasClass('valid')) {
           $('#quickorderphone').parent().parent().addClass('has-error');
           $("#orderModal .panel small").html( $("#orderModal .panel small").html() + '<?php echo $error_quickorder_phone; ?>');
         }
@@ -479,7 +533,7 @@
         $.ajax({
           url: 'index.php?route=common/footer/addquickorder',
           type: 'post',
-          data: $('#orderModal input[type=\'text\'], #orderModal input[type=\'tel\'],#orderModal input[type=\'email\'], #orderModal input[type=\'hidden\'], #product input[type=\'number\'], #product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+          data: $('#orderModal input[type=\'text\'], #orderModal input[type=\'tel\'], #orderModal input[type=\'email\'], #orderModal input[type=\'hidden\'], #product input[type=\'number\'], #product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
           dataType: 'json',
           success: function(json) {
             $('.alert, .text-danger').remove();
@@ -519,14 +573,18 @@
               $("#orderModal .panel small").html(json['success']);
               $('#orderModal .btn-primary').addClass('btn-success');
               $('#orderModal .btn-primary').html('<i class="fa fa-check"></i> <?php echo $button_quickorder_success_message; ?>');
+              <?php if ($moneymaker2_modules_quickorder_goal_google) { ?>
+                ga('send', 'event', 'button', 'click', 'quickorder');
+              <?php } ?>
+              <?php if ($moneymaker2_modules_quickorder_goal_yandex) { ?>
+                yaCounter<?php echo $moneymaker2_modules_quickorder_goal_yandex_counter; ?>.reachGoal('quickorder');
+              <?php } ?>
               var moneymaker2_total_count = json['moneymaker2_total_count'];
               var moneymaker2_total_sum = json['moneymaker2_total_sum'];
               $('#cart > .dropdown-toggle #cart-total').html(moneymaker2_total_sum);
               $('#cart > .dropdown-toggle .fa-stack .fa-stack-1x, .navbar-cart-toggle .fa-stack .fa-stack-1x').html(moneymaker2_total_count);
 
               $('#cart > ul').load('index.php?route=common/cart/info ul li');
-
-
             }
           },
           error: function(xhr, ajaxOptions, thrownError) {
@@ -588,9 +646,67 @@
         });
       };
       <?php } ?>
+      <?php if ($moneymaker2_modules_newsletter_enabled) { ?>
+      function addSubscriber() {
+        $.ajax({
+          url: 'index.php?route=common/footer/addSubscriber',
+          type: 'post',
+          data: $('#orderModal input[type=\'email\'], #orderModal input[type=\'text\']'),
+          dataType: 'json',
+          success: function(json) {
+            $('.alert, .text-danger').remove();
+            $('.form-group').removeClass('has-error');
+            if (json['error']) {
+              if (json['error']['validation']) {
+                $("#orderModal .panel").removeClass('panel-info');
+                $("#orderModal .panel").addClass('panel-danger');
+                $("#orderModal .panel small").html(json['error']['validation']);
+                $('#orderModal .btn-primary').removeAttr('disabled');
+              }
+              $('.text-danger').parent().addClass('has-error');
+            }
+            if (json['success']) {
+              $("#orderModal .panel").removeClass('panel-danger');
+              $("#orderModal .panel").removeClass('panel-info');
+              $("#orderModal .panel").addClass('panel-success');
+              $("#orderModal .panel small").html(json['success']);
+              $('#orderModal .btn-primary').addClass('btn-success');
+              $('#orderModal .btn-primary').html('<i class="fa fa-check"></i> <?php echo $button_newsletter_success_message; ?>');
+            }
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+          }
+        });
+      };
+      <?php } ?>
     <?php } ?>
-
+    <?php if (($moneymaker2_modules_popup&&$moneymaker2_modules_popup_link)||($moneymaker2_header_alert&&$moneymaker2_header_alert_text)) { ?>
+    var mmr2cookies = Cookies.noConflict();
+    <?php } ?>
+    <?php if ($moneymaker2_modules_popup&&$moneymaker2_modules_popup_link) { ?>
+    if (!mmr2cookies.get('mmr2_popup')) {
+      <?php if ($moneymaker2_modules_popup_link=='newsletter') { ?>
+        $('#newsletteremail').val('');
+        $('footer  ul > li > .input-group-sm > span.input-group-btn .btn-primary').click();
+      <?php } else { ?>
+        $('#infoModal').find('.modal-title.h4').text('<?php echo $moneymaker2_modules_popup_title; ?>');
+        $('#infoModal').find('.modal-body').load('index.php?route=information/information/agree&information_id=<?php echo $moneymaker2_modules_popup_link; ?>', function () {
+        $('#infoModal').modal({show: true},'show');
+      });
+      <?php } ?>
+      mmr2cookies.set('mmr2_popup', 'valid', { expires: <?php echo $moneymaker2_modules_popup_limit; ?> });
+    }
+    <?php } ?>
+    <?php if ($moneymaker2_header_alert&&$moneymaker2_header_alert_text) { ?>
+    if (!mmr2cookies.get('mmr2_alert')) {
+      $("header").before( '<div class="header-alert collapse"><div class="pull-right text-primary" data-toggle="collapse" data-target="body > .collapse"><i class="fa fa-close"></i></div><div class="container"><div class="text-center"><?php echo $moneymaker2_header_alert_text; ?></div></div></div>' );
+      $(".header-alert").collapse();
+      $('.header-alert').on('hide.bs.collapse', function () {
+        mmr2cookies.set('mmr2_alert', 'valid', { expires: 365 });
+      })
+    }
+    <?php } ?>
   });
 //--></script>
-
 </body></html>

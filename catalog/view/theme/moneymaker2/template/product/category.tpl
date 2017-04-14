@@ -17,17 +17,40 @@
       </ul>
       <?php echo $content_top; ?>
       <h1 class="h2 text-center content-title"><?php echo $heading_title; ?></h1>
+      <div class="hr"></div>
       <?php if ((!$moneymaker2_catalog_categories_images_hide&&$thumb)||($moneymaker2_common_categories_icons_enabled&&$category_icon)) { ?>
       <div class="row catalog-thumb">
         <div class="col-sm-12 text-center">
+          <?php if ($moneymaker2_catalog_categories_advantages_enabled&&$moneymaker2_categories_advantages_l) { ?>
+          <div class="catalog-advantage text-right <?php echo $moneymaker2_categories_advantages_l['style']; ?>" data-toggle="modal" data-target="#infoModal" data-info-title="<?php echo $moneymaker2_categories_advantages_l['name']; ?>" data-info-description="<?php echo $moneymaker2_categories_advantages_l['link']; ?>">
+            <span class="text-right"><small><?php echo $moneymaker2_categories_advantages_l['name']; ?></small></span>
+            <span class="advantage-caret-right"></span>
+            <span class="fa-stack fa-lg img-thumbnail">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-<?php echo $moneymaker2_categories_advantages_l['icon']; ?> fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+          <?php } ?>
           <?php if (!$moneymaker2_catalog_categories_images_hide&&$thumb) { ?>
-          <img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" />
+          <img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail<?php if ($moneymaker2_catalog_categories_images_round) { ?> img-circle<?php } ?>" />
           <?php } ?>
           <?php if ($moneymaker2_common_categories_icons_enabled&&$category_icon) { ?>
             <span class="fa-stack fa-2x img-thumbnail">
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa fa-<?php echo $category_icon; ?> fa-stack-1x fa-inverse"></i>
             </span>
+          <?php } ?>
+          <?php if ($moneymaker2_catalog_categories_advantages_enabled&&$moneymaker2_categories_advantages_r) { ?>
+          <div class="catalog-advantage text-left <?php echo $moneymaker2_categories_advantages_r['style']; ?>" data-toggle="modal" data-target="#infoModal" data-info-title="<?php echo $moneymaker2_categories_advantages_r['name']; ?>" data-info-description="<?php echo $moneymaker2_categories_advantages_r['link']; ?>">
+            <span class="fa-stack fa-lg img-thumbnail">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-<?php echo $moneymaker2_categories_advantages_r['icon']; ?> fa-stack-1x fa-inverse"></i>
+            </span>
+            <span class="advantage-caret-left"></span>
+            <span class="text-left"><small><?php echo $moneymaker2_categories_advantages_r['name']; ?></small></span>
+          </div>
+          <?php } else if ($moneymaker2_catalog_categories_advantages_enabled&&$moneymaker2_categories_advantages_l&&!$moneymaker2_categories_advantages_r) { ?>
+          <div class="catalog-advantage"></div>
           <?php } ?>
         </div>
       </div>
@@ -99,14 +122,10 @@
           </div>
         </div>
       </div>
-      <div class="row products" itemscope itemtype="http://schema.org/ItemList">
-        <!--meta itemprop="numberOfItems" content="<?php echo count($products); ?>" /-->
-        <?php $meta_position = 1; ?>
+      <div class="row products">
         <?php foreach ($products as $product) { ?>
-        <div class="product-layout <?php if ($moneymaker2_catalog_default_view) { ?>product-list<?php } else { ?>product-grid<?php } ?>" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <meta itemprop="position" content="<?php echo $meta_position; ?>" />
-          <div class="product-thumb" itemprop="item" itemscope itemtype="http://schema.org/Product">
-            <meta itemprop="name" content="<?php echo $product['name']; ?>" />
+        <div class="product-layout <?php if ($moneymaker2_catalog_default_view) { ?>product-list<?php } else { ?>product-grid<?php } ?>">
+          <div class="product-thumb">
             <div class="image">
               <?php if ($product['stickers']) { ?>
               <div class="stickers">
@@ -121,9 +140,7 @@
               </div>
               <?php } ?>
               <?php if ($product['rating']) { ?>
-              <div class="rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-                <meta itemprop="reviewCount" content="<?php echo $product['review_count']; ?>" />
-                <meta itemprop="ratingValue" content="<?php echo $product['rating']; ?>" />
+              <div class="rating">
                 <?php for ($i = 5; $i >= 1; $i--) { ?>
                 <?php if ($product['rating'] < $i) { ?>
                 <i class="fa fa-star"></i>
@@ -133,7 +150,7 @@
                 <?php } ?>
               </div>
               <?php } ?>
-              <a href="<?php echo $product['href']; ?>" itemprop="url"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" itemprop="image" /></a>
+              <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a>
             </div>
             <div>
               <div class="caption">
@@ -142,7 +159,7 @@
               <?php if ($moneymaker2_common_price_detached) { ?>
               <div class="price-detached"><small><?php if ($product['price']) { ?><span class="price text-muted"><?php if (!$product['special']) { ?><?php echo $product['price']; ?><?php } else { ?><span class="price-new"><b><?php echo $product['special']; ?></b></span> <span class="price-old"><?php echo $product['price']; ?></span><?php } ?></span><?php } ?><?php if ($product['tax']) { ?><br /><span class="price-tax text-muted"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span><?php } ?></small></div>
               <?php } ?>
-              <div class="btn-group btn-group-sm" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <div class="btn-group btn-group-sm">
                 <?php if (!$moneymaker2_common_buy_hide) { ?>
                 <button type="button" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<?php echo $product['addtocart_tooltip']; ?>" class="<?php echo $product['addtocart_class']; ?>" <?php if (!$product['sold']) { ?>onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"<?php } ?>><i class="fa fa-fw fa-shopping-cart"></i> <?php if (!$moneymaker2_common_price_detached&&$product['price']) { ?><span class="price"><?php if (!$product['special']) { ?><?php echo $product['price']; ?><?php } else { ?><span class="price-new"><?php echo $product['special']; ?></span><?php } ?></span><?php } else { ?><?php echo $button_cart; ?><?php } ?></button>
                 <?php } ?>
@@ -151,17 +168,13 @@
                 <?php } ?>
                 <?php if (!$moneymaker2_common_wishlist_hide) { ?><button type="button" class="btn btn-default" <?php if (!$moneymaker2_common_wishlist_caption) { ?>data-toggle="tooltip" data-placement="bottom" <?php } ?>title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-fw fa-heart"></i><?php if ($moneymaker2_common_wishlist_caption) { ?> <?php echo $button_wishlist; ?><?php } ?></button><?php } ?>
                 <?php if (!$moneymaker2_common_compare_hide) { ?><button type="button" class="btn btn-default" <?php if (!$moneymaker2_common_compare_caption) { ?>data-toggle="tooltip" data-placement="bottom" <?php } ?>title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-fw fa-area-chart"></i><?php if ($moneymaker2_common_compare_caption) { ?> <?php echo $button_compare; ?><?php } ?></button><?php } ?>
-                <meta itemprop="priceCurrency" content="<?php echo $moneymaker2_currency; ?>" />
-                <meta itemprop="price" content="<?php echo rtrim(preg_replace("/[^0-9\.]/", "", ($product['special'] ? $product['special'] : $product['price'])), '.'); ?>" />
-                <link itemprop="availability" href = "http://schema.org/<?php echo ($product['quantity']>0 ? "InStock" : "OutOfStock") ?>" />
               </div>
               <?php if (!$moneymaker2_common_price_detached&&$product['price']&&$product['tax']) { ?><div class="price-tax"><small class="text-muted"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></small></div><?php } ?>
               <div class="additional"><?php echo $product['stock']; ?> <?php echo $product['code']; ?></div>
-              <div class="description" itemprop="description"><?php echo $product['description']; ?></div>
+              <div class="description"><?php echo $product['description']; ?></div>
             </div>
           </div>
         </div>
-        <?php $meta_position++; ?>
         <?php if ($moneymaker2_modules_promo_enabled&&$moneymaker2_modules_promos) { ?>
           <?php foreach ($moneymaker2_modules_promos as $moneymaker2_modules_promo) { ?>
             <?php if ($moneymaker2_modules_promo['sort_order']==$product['sort_order']) { ?>
