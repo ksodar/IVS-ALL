@@ -26,6 +26,7 @@ class ControllerExtensionModuleMoneymaker2Slideshow extends Controller {
 		$data['items'] = $setting['items'];
 		$data['animation_in'] = $setting['animation_in'];
 		//$data['animation_out'] = $setting['animation_out'];
+		$data['tilt3d'] = isset($setting['tilt3d']) ? ($setting['fullwidth']||$setting['fullwidth_bottom'] ? $setting['tilt3d'] : '') : '';
 
 		$data['parallax'] = $setting['parallax'];
 		$data['parallax_speed'] = $setting['parallax_speed'];
@@ -43,9 +44,9 @@ class ControllerExtensionModuleMoneymaker2Slideshow extends Controller {
 					'position'  => $value['position'],
 					'text_width'  => $value['text_width'],
 					'text_style'  => $value['text_style'],
-					'title'  => $value['title'][$this->config->get('config_language_id')],
-					'text'  => $value['text'][$this->config->get('config_language_id')],
-					'btn_title'  => $value['btn_title'][$this->config->get('config_language_id')] ? $value['btn_title'][$this->config->get('config_language_id')] : '',
+					'title'  => isset($value['title'][$this->config->get('config_language_id')]) ? $value['title'][$this->config->get('config_language_id')] : null,
+					'text'  => isset($value['text'][$this->config->get('config_language_id')]) ? $value['text'][$this->config->get('config_language_id')] : null,
+					'btn_title'  => (isset($value['btn_title'][$this->config->get('config_language_id')])&&$value['btn_title'][$this->config->get('config_language_id')]) ? $value['btn_title'][$this->config->get('config_language_id')] : '',
 					'btn_style' => $value['btn_style'],
 					'image' => is_file(DIR_IMAGE . $value['image']) ? $this->model_tool_image->resize($value['image'], $setting['width'], $setting['height']) : $this->model_tool_image->resize('no_image.png', $setting['width'], $setting['height'])
 				);

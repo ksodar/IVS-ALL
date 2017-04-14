@@ -22,6 +22,11 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 							$this->request->post['moneymaker2_product_points'][$key]['categories'] = explode('::', substr($this->request->post['moneymaker2_product_points'][$key]['categories'], 1, -1));
 					}
 			}
+			if (isset($this->request->post['moneymaker2_categories_advantages'])) {
+					foreach ($this->request->post['moneymaker2_categories_advantages'] as $key => $value) {
+							$this->request->post['moneymaker2_categories_advantages'][$key]['categories'] = explode('::', substr($this->request->post['moneymaker2_categories_advantages'][$key]['categories'], 1, -1));
+					}
+			}
 			if (isset($this->request->post['moneymaker2_header_categories_panel_description_categories'])) {
 					$this->request->post['moneymaker2_header_categories_panel_description_categories'] = explode('::', substr($this->request->post['moneymaker2_header_categories_panel_description_categories'], 1, -1));
 				}
@@ -104,7 +109,7 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			'entry_color',
 			'entry_style',
 			'entry_style_help',
-			'entry_transparency',
+			'entry_opacity',
 			'entry_glowing',
 			'entry_button_title',
 			'entry_caption',
@@ -304,6 +309,8 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 
 			'entry_tab_header',
 			'entry_header_help',
+			'entry_header_alert',
+			'entry_header_alert_help',
 			'entry_header_strip_expanded',
 			'entry_header_strip_fixed',
 			'entry_header_strip_fixed_help',
@@ -358,8 +365,12 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			'entry_catalog_categories_metatitles_enabled',
 			'entry_catalog_categories_metatitles_enabled_help',
 			'entry_catalog_categories_display_image',
+			'entry_catalog_categories_image_round',
 			'entry_catalog_categories_display_images',
 			'entry_catalog_categories_move_description',
+			'entry_catalog_categories_advantages',
+			'entry_catalog_categories_advantages_help',
+			'entry_catalog_categories_advantages_add_help',
 			'entry_catalog_contacts_help',
 			'entry_catalog_contacts_call_title',
 			'entry_catalog_contacts_mail_title',
@@ -399,9 +410,19 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			'entry_modules_quickorder_display_catalog',
 			'entry_modules_quickorder_display_popupcart',
 			'entry_modules_quickorder_display_checkoutcart',
+			'entry_modules_quickorder_goal_google',
+			'entry_modules_quickorder_goal_google_help',
+			'entry_modules_quickorder_goal_yandex',
+			'entry_modules_quickorder_goal_yandex_help',
+			'entry_modules_quickorder_goal_yandex_counter',
 
 			'entry_tab_callback',
 			'entry_modules_callback_help',
+
+			'entry_tab_newsletter',
+			'entry_modules_newsletter_help',
+			'entry_tab_popup',
+			'entry_modules_popup_help',
 
 			'entry_tab_help',
 			'entry_help_text',
@@ -645,6 +666,24 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			);
 		}
 
+		if (isset($this->request->post['moneymaker2_header_panellinks'])) {
+			$results = $this->request->post['moneymaker2_header_panellinks'];
+		} elseif (isset($setting_info['moneymaker2_header_panellinks'])) {
+			$results = $setting_info['moneymaker2_header_panellinks'];
+		} else {
+			$results = array();
+		}
+		$data['moneymaker2_header_panellinks'] = array();
+		foreach ($results as $result) {
+			$data['moneymaker2_header_panellinks'][] = array(
+				'icon' => $result['icon'],
+				'caption' => $result['caption'],
+				'link'  => $result['link'],
+				'multilink'  => isset($result['multilink']) ? $result['multilink'] : '',
+				'sort_order'  => $result['sort_order'],
+			);
+		}
+
 		if (isset($this->request->post['moneymaker2_header_links'])) {
 			$results = $this->request->post['moneymaker2_header_links'];
 		} elseif (isset($setting_info['moneymaker2_header_links'])) {
@@ -778,6 +817,24 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			);
 		}
 
+		if (isset($this->request->post['moneymaker2_categories_advantages'])) {
+			$results = $this->request->post['moneymaker2_categories_advantages'];
+		} elseif (isset($setting_info['moneymaker2_categories_advantages'])) {
+			$results = $setting_info['moneymaker2_categories_advantages'];
+		} else {
+			$results = array();
+		}
+		$data['moneymaker2_categories_advantages'] = array();
+		foreach ($results as $result) {
+			$data['moneymaker2_categories_advantages'][] = array(
+				'icon' => $result['icon'],
+				'categories' => isset($result['categories'])&&$result['categories'] ? $result['categories'] : array(0),
+				'name' => $result['name'],
+				'link' => $result['link'],
+				'style' => $result['style'],
+			);
+		}
+
 		if (isset($this->request->post['moneymaker2_catalog_compare_charts'])) {
 			$results = $this->request->post['moneymaker2_catalog_compare_charts'];
 		} elseif (isset($setting_info['moneymaker2_catalog_compare_charts'])) {
@@ -826,6 +883,21 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			$data['moneymaker2_header_cart_thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 		}
 
+		if (isset($this->request->post['moneymaker2_modules_newsletter_image_src'])) {
+			$data['moneymaker2_modules_newsletter_image_src'] = $this->request->post['moneymaker2_modules_newsletter_image_src'];
+		} elseif (isset($setting_info['moneymaker2_modules_newsletter_image_src'])) {
+			$data['moneymaker2_modules_newsletter_image_src'] = $setting_info['moneymaker2_modules_newsletter_image_src'];
+		} else {
+			$data['moneymaker2_modules_newsletter_image_src'] = '';
+		}
+		if (isset($this->request->post['moneymaker2_modules_newsletter_image_src']) && is_file(DIR_IMAGE . $this->request->post['moneymaker2_modules_newsletter_image_src'])) {
+			$data['moneymaker2_modules_newsletter_thumb'] = $this->model_tool_image->resize($this->request->post['moneymaker2_modules_newsletter_image_src'], 100, 100);
+		} elseif (isset($setting_info['moneymaker2_modules_newsletter_image_src']) && is_file(DIR_IMAGE . $setting_info['moneymaker2_modules_newsletter_image_src'])) {
+			$data['moneymaker2_modules_newsletter_thumb'] = $this->model_tool_image->resize($setting_info['moneymaker2_modules_newsletter_image_src'], 100, 100);
+		} else {
+			$data['moneymaker2_modules_newsletter_thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+
 		if (isset($this->request->post['moneymaker2_product_limit'])) {
 			$data['moneymaker2_product_limit'] = $this->request->post['moneymaker2_product_limit'];
 		} elseif (isset($setting_info['moneymaker2_product_limit'])) {
@@ -855,7 +927,7 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 		} elseif (isset($setting_info['moneymaker2_image_category_width'])) {
 			$data['moneymaker2_image_category_width'] = $setting_info['moneymaker2_image_category_width'];
 		} else {
-			$data['moneymaker2_image_category_width'] = 228;
+			$data['moneymaker2_image_category_width'] = 70;
 		}
 		
 		if (isset($this->request->post['moneymaker2_image_category_height'])) {
@@ -863,7 +935,7 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 		} elseif (isset($setting_info['moneymaker2_image_category_height'])) {
 			$data['moneymaker2_image_category_height'] = $setting_info['moneymaker2_image_category_height'];
 		} else {
-			$data['moneymaker2_image_category_height'] = 228;
+			$data['moneymaker2_image_category_height'] = 70;
 		}
 		
 		if (isset($this->request->post['moneymaker2_image_thumb_width'])) {
@@ -1059,6 +1131,9 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			//'moneymaker2_header_transparency',
 			//'moneymaker2_header_glowing',
 			//'moneymaker2_header_glowing_color',
+			'moneymaker2_header_alert',
+			'moneymaker2_header_alert_bg_color',
+			'moneymaker2_header_alert_text',
 			'moneymaker2_header_strip_expanded',
 			'moneymaker2_header_strip_fixed',
 			'moneymaker2_header_strip_toggle_cart',
@@ -1102,6 +1177,7 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			'moneymaker2_header_categories_menu_thumbs_height',
 			'moneymaker2_header_categories_menu_columns',
 			'moneymaker2_header_categories_panel_mod',
+			'moneymaker2_header_categories_panel_hideparents',
 			'moneymaker2_header_categories_panel_hidechilds',
 			'moneymaker2_header_categories_panel_hidethumbs',
 			'moneymaker2_header_categories_panel_icons',
@@ -1210,10 +1286,12 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			'moneymaker2_catalog_layout_switcher_hide',
 			'moneymaker2_catalog_categories_metatitles_enabled',
 			'moneymaker2_catalog_categories_images_hide',
+			'moneymaker2_catalog_categories_images_round',
 			'moneymaker2_catalog_categories_child_images',
 			'moneymaker2_catalog_categories_child_images_width',
 			'moneymaker2_catalog_categories_child_images_height',
 			'moneymaker2_catalog_categories_move_description',
+			'moneymaker2_catalog_categories_advantages_enabled',
 			'moneymaker2_catalog_products_grid_stock_hide',
 			'moneymaker2_catalog_products_list_stock_hide',
 			'moneymaker2_catalog_products_stock_color',
@@ -1232,6 +1310,8 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			'moneymaker2_catalog_contacts_multilink',
 			'moneymaker2_catalog_contacts_map',
 			'moneymaker2_catalog_contacts_map_key',
+			'moneymaker2_catalog_contacts_map_custom',
+			'moneymaker2_catalog_contacts_map_custom_code',
 			'moneymaker2_catalog_compare_images_hide',
 			'moneymaker2_catalog_compare_model_hide',
 			'moneymaker2_catalog_compare_brand_hide',
@@ -1315,12 +1395,25 @@ class ControllerExtensionThemeMoneymaker2 extends Controller {
 			'moneymaker2_modules_quickorder_button_tooltip',
 			'moneymaker2_modules_quickorder_phone_mask_enabled',
 			'moneymaker2_modules_quickorder_phone_mask',
+			'moneymaker2_modules_quickorder_goal_google',
+			'moneymaker2_modules_quickorder_goal_yandex',
+			'moneymaker2_modules_quickorder_goal_yandex_counter',
 
 			'moneymaker2_modules_callback_enabled',
 			'moneymaker2_modules_callback_sender',
 			'moneymaker2_modules_callback_recipient',
 			'moneymaker2_modules_callback_header',
 			'moneymaker2_modules_callback_caption',
+
+			'moneymaker2_modules_newsletter_enabled',
+			'moneymaker2_modules_newsletter_header',
+			'moneymaker2_modules_newsletter_caption',
+			'moneymaker2_modules_newsletter_image',
+			'moneymaker2_modules_newsletter_thumbs_width',
+			'moneymaker2_modules_newsletter_thumbs_height',
+
+			'moneymaker2_modules_popup',
+			'moneymaker2_modules_popup_link',
 		);
 
 		foreach ($config_data as $conf) {

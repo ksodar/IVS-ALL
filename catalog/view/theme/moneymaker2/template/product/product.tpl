@@ -84,7 +84,7 @@
                 <div class="stock-<?php echo $moneymaker2_product_points_stock_id; ?>">
                   <span class="fa-stack fa-<?php echo $moneymaker2_product_points_size; ?> pull-left"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-<?php echo $moneymaker2_product_points_stock_icon; ?> fa-stack-1x fa-inverse"></i></span>
                   <h4><?php echo $text_stock; ?> <?php echo $stock; ?></h4>
-                  <small class="text-muted"><?php echo $moneymaker2_product_points_stock_caption; ?></small>
+                  <div class="text-muted"><?php echo $moneymaker2_product_points_stock_caption; ?></div>
                 </div>
                 <?php } ?>
                 <?php if ($moneymaker2_product_points_manufacturer&&$manufacturer) { ?>
@@ -99,7 +99,7 @@
                   <div>
                     <span class="fa-stack fa-<?php echo $moneymaker2_product_points_size; ?> pull-left"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-<?php echo $value['icon']; ?> fa-stack-1x fa-inverse"></i></span>
                     <h4><?php echo $value['name']; ?></h4>
-                    <small class="text-muted"><?php echo $value['text']; ?></small>
+                    <div class="text-muted"><?php echo $value['text']; ?></div>
                   </div>
                   <?php } ?>
                 <?php } ?>
@@ -762,12 +762,12 @@ $(document).ready(function() {
         $.magnificPopup.instance.next = function() {
           var self = this;
           self.wrap.removeClass('mfp-image-loaded');
-          setTimeout(function() { $.magnificPopup.proto.next.call(self); }, 0);
+          setTimeout(function() { $.magnificPopup.proto.next.call(self); }, 100);
         }
         $.magnificPopup.instance.prev = function() {
           var self = this;
           self.wrap.removeClass('mfp-image-loaded');
-          setTimeout(function() { $.magnificPopup.proto.prev.call(self); }, 0);
+          setTimeout(function() { $.magnificPopup.proto.prev.call(self); }, 100);
         }
 
         $(".mfp-figure figure").prepend("<div id='image-addon' class='hidden-xs'><?php if ($moneymaker2_common_price_detached) { ?><?php if ($price) { ?><div class='price-detached'><span class='price'><?php if (!$special) { ?><?php echo $price; ?><?php } else { ?><span class='price-new'><b><?php echo $special; ?></b></span> <span class='price-old'><?php echo $price; ?></span><?php } ?></span></div><?php } ?><?php } ?><div class='btn-group additional-buttons'><?php if (!$moneymaker2_common_buy_hide) { ?><button class='<?php echo $addtocart_class; ?>' type='button' data-toggle='tooltip' data-html='true' data-placement='bottom' title='<?php echo str_replace("'",'\"',$addtocart_tooltip); ?>' <?php if (!$product_sold) { ?>onclick='$(\".mfp-figure .btn-primary\").tooltip(\"hide\"); $(\"#image-addon\").remove();$(\"#button-cart\").click();'<?php } ?>><i class='fa fa-shopping-cart'></i> <?php if (!$moneymaker2_common_price_detached) { ?><?php if ($price&&$special) { ?><?php echo $special; ?><?php } else if ($price) { ?><?php echo $price; ?><?php } ?><?php } else { ?><?php echo $button_cart; ?><?php } ?></button><?php } ?><?php if (!$moneymaker2_common_wishlist_hide) { ?><button type='button' class='btn btn-default' <?php if (!$moneymaker2_common_wishlist_caption) { ?>data-toggle='tooltip' data-placement='bottom' <?php } ?>title='<?php echo $button_wishlist; ?>' onclick='wishlist.add(<?php echo $product_id; ?>);'><i class='fa fa-heart'></i><?php if ($moneymaker2_common_wishlist_caption) { ?> <?php echo $button_wishlist; ?><?php } ?></button><?php } ?><?php if (!$moneymaker2_common_compare_hide) { ?><button type='button' class='btn btn-default' <?php if (!$moneymaker2_common_compare_caption) { ?>data-toggle='tooltip' data-placement='bottom' <?php } ?>title='<?php echo $button_compare; ?>' onclick='compare.add(<?php echo $product_id; ?>);'><i class='fa fa-area-chart'></i><?php if ($moneymaker2_common_compare_caption) { ?> <?php echo $button_compare; ?><?php } ?></button><?php } ?></div><?php if ($moneymaker2_modules_quickorder_enabled&&$moneymaker2_modules_quickorder_display_thumb) { ?><button type='button' class='<?php echo $quickorder_class; ?>' <?php if (!$product_sold) { ?>data-toggle='modal' data-target='#orderModal' data-order-mode='product' data-order-product-id='<?php echo $product_id; ?>' data-order-title='<?php echo $heading_title; ?>' data-order-img-src='<?php echo $quickorder_thumb; ?>' data-order-price='<?php if ($quickorder_tax) echo $text_tax; ?><?php if ($price&&$special) { ?><?php echo strip_tags($special); ?><?php } else if ($price) { ?><?php echo strip_tags($price); ?><?php } ?>'<?php } ?>><span data-toggle='tooltip' data-html='true' data-placement='bottom' title='<?php echo str_replace("'",'\"',$quickorder_tooltip); ?>'><i class='fa fa-fw fa-send'></i> <?php echo $moneymaker2_modules_quickorder_button_title; ?></span></button><?php } ?></div>");
@@ -775,7 +775,7 @@ $(document).ready(function() {
       },
       imageLoadComplete: function() {
         var self = this;
-        setTimeout(function() { self.wrap.addClass('mfp-image-loaded'); }, 1);
+        setTimeout(function() { self.wrap.addClass('mfp-image-loaded'); }, 15);
       },
       beforeClose: function() {
         $(".mfp-arrow-right").remove();

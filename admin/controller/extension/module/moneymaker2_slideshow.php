@@ -60,6 +60,8 @@ class ControllerExtensionModuleMoneymaker2Slideshow extends Controller {
 		$data['entry_fullscreen_help'] = $this->language->get('entry_fullscreen_help');
 		$data['entry_fullscreen_bottom'] = $this->language->get('entry_fullscreen_bottom');
 		$data['entry_fullscreen_bottom_help'] = $this->language->get('entry_fullscreen_bottom_help');
+		$data['entry_tilt3d'] = $this->language->get('entry_tilt3d');
+		$data['entry_tilt3d_help'] = $this->language->get('entry_tilt3d_help');
 		$data['entry_parallax'] = $this->language->get('entry_parallax');
 		$data['entry_parallax_help'] = $this->language->get('entry_parallax_help');
 		$data['entry_parallax_speed'] = $this->language->get('entry_parallax_speed');
@@ -218,6 +220,13 @@ class ControllerExtensionModuleMoneymaker2Slideshow extends Controller {
 			$data['fullwidth_bottom'] = $module_info['fullwidth_bottom'];
 		} else {
 			$data['fullwidth_bottom'] = '';
+		}
+		if (isset($this->request->post['tilt3d'])) {
+			$data['tilt3d'] = $this->request->post['tilt3d'];
+		} elseif (!empty($module_info)) {
+			$data['tilt3d'] = isset($module_info['tilt3d']) ? $module_info['tilt3d'] : '';
+		} else {
+			$data['tilt3d'] = '';
 		}
 		if (isset($this->request->post['parallax'])) {
 			$data['parallax'] = $this->request->post['parallax'];

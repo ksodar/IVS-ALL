@@ -86,6 +86,10 @@ body.owl-moneymaker2-fullscreen-bottom footer {
 }
 .owl-moneymaker2 .item-text .btn {
     margin-top: 7px;
+    margin-bottom: -25px;
+}
+.owl-moneymaker2.tilt3d .item-text .btn {
+    margin-top: -15px;
 }
 .owl-moneymaker2 .item-text {
     position: absolute;
@@ -114,7 +118,12 @@ body.owl-moneymaker2-fullscreen-bottom footer {
 .owl-moneymaker2 .item-text.top-left, .owl-moneymaker2 .item-text.top-center, .owl-moneymaker2 .item-text.top-right {top: 5%;}
 .owl-moneymaker2 .item-text.top-left {left: 5%;}
 .owl-moneymaker2 .item-text.top-right {right: 5%}
-.owl-moneymaker2 .item-text.middle-left, .owl-moneymaker2 .item-text.middle-center, .owl-moneymaker2 .item-text.middle-right {transform: translate(0,-50%); top: 50%;}
+.owl-moneymaker2 .item-text.middle-left, .owl-moneymaker2 .item-text.middle-center, .owl-moneymaker2 .item-text.middle-right {
+    -webkit-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    top: 50%;
+}
 .owl-moneymaker2 .item-text.middle-left {left: 5%;}
 .owl-moneymaker2 .item-text.middle-right {right: 5%;}
 .owl-moneymaker2 .item-text.bottom-left, .owl-moneymaker2 .item-text.bottom-center, .owl-moneymaker2 .item-text.bottom-right {bottom: 7%;}
@@ -129,9 +138,11 @@ body.owl-moneymaker2-fullscreen-bottom footer {
 }
 .owl-moneymaker2 .owl-buttons .owl-prev, .owl-moneymaker2 .owl-buttons .owl-next {
     position: absolute;
+    -webkit-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    transform: translate(0,-50%);
     top: 50%;
-    margin-top: -22px;
-    padding: 8px;
+    padding: 16px 8px;
 }
 .owl-moneymaker2.dark-buttons .owl-buttons .owl-prev, .owl-moneymaker2.dark-buttons .owl-buttons .owl-next {
     color: #222;
@@ -203,4 +214,49 @@ body.owl-moneymaker2-fullscreen-bottom footer {
     z-index: 1;
     position: relative;
     text-align: center;
+}
+
+.owl-moneymaker2.tilt3d .owl-item > .item {
+    transform-style: preserve-3d;
+    transform: perspective(2000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+    will-change: transform;
+}
+.owl-moneymaker2.tilt3d .owl-wrapper .item-text {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform-style: preserve-3d;
+    transform: scale3d(1, 1, 1);
+    -ms-transform-style: preserve-3d;
+    -ms-transform: scale3d(1, 1, 1);
+    -ms-transform: translateZ(50px);
+}
+
+.owl-moneymaker2.tilt3d .owl-wrapper .item-text > div {
+    -webkit-transform: scale3d(0.66, 0.66, 1);
+    transform: scale3d(0.66, 0.66, 1);
+    font-size: 48px;
+    line-height: 42px;
+    margin-bottom: 4px;
+}
+.owl-moneymaker2.tilt3d .owl-wrapper .item-text > p.hidden-xs {
+    -webkit-transform: scale3d(0.66, 0.66, 1);
+    transform: scale3d(0.66, 0.66, 1);
+    font-size: 21px;
+    line-height: 21px;
+}
+.owl-moneymaker2.tilt3d .owl-wrapper .item-text > p > a {
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+    font-size: 36px;
+    padding: 20px 32px;
+}
+.owl-moneymaker2.tilt3d .item-text.top-left, .owl-moneymaker2.tilt3d .item-text.top-center, .owl-moneymaker2.tilt3d .item-text.top-right, .owl-moneymaker2.tilt3d .item-text.bottom-left, .owl-moneymaker2.tilt3d .item-text.bottom-center, .owl-moneymaker2.tilt3d .item-text.bottom-right {
+    -webkit-transform: translateZ(80px);
+    -ms-transform: translateZ(80px);
+    transform: translateZ(80px);
+}
+.owl-moneymaker2.tilt3d .item-text.middle-left, .owl-moneymaker2.tilt3d .item-text.middle-center, .owl-moneymaker2.tilt3d .item-text.middle-right {
+    -webkit-transform: translate3d(0, -50%, 80px);
+    -ms-transform: translate3d(0, -50%, 80px);
+    transform: translate3d(0, -50%, 80px);
 }

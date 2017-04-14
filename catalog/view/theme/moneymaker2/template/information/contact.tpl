@@ -183,4 +183,9 @@
   }
 </script>
 <?php } ?>
+<?php if ($moneymaker2_catalog_contacts_map_custom&&$moneymaker2_catalog_contacts_map_custom_code) { ?>
+<div id="geomap">
+  <?php echo $moneymaker2_catalog_contacts_map_custom_code; ?>
+</div>
+<?php } ?>
 <?php echo $footer; ?>
