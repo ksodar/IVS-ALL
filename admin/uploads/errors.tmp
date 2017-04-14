@@ -1,120 +1,132 @@
- The Product passed: Row ~= 0 Incorrect link = url in column = 15
-Row ~= 8 SKU = 249007 Attribute parse error 
-Row ~= 9 SKU = 249963 Attribute parse error 
-Row ~= 10 SKU = 249964 Attribute parse error 
- The Product passed: Row ~= 99 parsing product price fail, price = 0 
- The Product passed: Row ~= 103 parsing product price fail, price = 0 
- The Product passed: Row ~= 108 parsing product price fail, price = 0 
- The Product passed: Row ~= 129 parsing product price fail, price = 0 
- The Product passed: Row ~= 130 parsing product price fail, price = 0 
- The Product passed: Row ~= 131 parsing product price fail, price = 0 
- The Product passed: Row ~= 132 parsing product price fail, price = 0 
- The Product passed: Row ~= 133 parsing product price fail, price = 0 
- The Product passed: Row ~= 134 parsing product price fail, price = 0 
- The Product passed: Row ~= 136 parsing product price fail, price = 0 
- The Product passed: Row ~= 137 parsing product price fail, price = 0 
- The Product passed: Row ~= 138 parsing product price fail, price = 0 
- The Product passed: Row ~= 139 parsing product price fail, price = 0 
- The Product passed: Row ~= 140 parsing product price fail, price = 0 
- The Product passed: Row ~= 141 parsing product price fail, price = 0 
- The Product passed: Row ~= 155 parsing product price fail, price = 0 
- The Product passed: Row ~= 169 parsing product price fail, price = 0 
- The Product passed: Row ~= 170 parsing product price fail, price = 0 
- The Product passed: Row ~= 171 parsing product price fail, price = 0 
- The Product passed: Row ~= 172 parsing product price fail, price = 0 
- The Product passed: Row ~= 173 parsing product price fail, price = 0 
+Row ~= 93 SKU = 257442 Attribute parse error 
+ The Product passed: Row ~= 148 parsing product price fail, price = 0 
+ The Product passed: Row ~= 149 parsing product price fail, price = 0 
+ The Product passed: Row ~= 151 parsing product price fail, price = 0 
+ The Product passed: Row ~= 152 parsing product price fail, price = 0 
+ The Product passed: Row ~= 153 parsing product price fail, price = 0 
  The Product passed: Row ~= 174 parsing product price fail, price = 0 
  The Product passed: Row ~= 175 parsing product price fail, price = 0 
-Row ~= 211 SKU = 226645 Attribute parse error 
- The Product passed: Row ~= 214 parsing product price fail, price = 0 
- The Product passed: Row ~= 215 parsing product price fail, price = 0 
- The Product passed: Row ~= 216 parsing product price fail, price = 0 
- The Product passed: Row ~= 288 parsing product price fail, price = 0 
- The Product passed: Row ~= 289 parsing product price fail, price = 0 
- The Product passed: Row ~= 293 parsing product price fail, price = 0 
-Row ~= 308 SKU = 249965 Attribute parse error 
-Row ~= 309 SKU = 249966 Attribute parse error 
-Row ~= 310 SKU = 249967 Attribute parse error 
- The Product passed: Row ~= 440 parsing product price fail, price = 0 
- The Product passed: Row ~= 473 parsing product price fail, price = 0 
- The Product passed: Row ~= 474 parsing product price fail, price = 0 
- The Product passed: Row ~= 475 parsing product price fail, price = 0 
- The Product passed: Row ~= 476 parsing product price fail, price = 0 
- The Product passed: Row ~= 477 parsing product price fail, price = 0 
- The Product passed: Row ~= 479 parsing product price fail, price = 0 
- The Product passed: Row ~= 480 parsing product price fail, price = 0 
- The Product passed: Row ~= 481 parsing product price fail, price = 0 
- The Product passed: Row ~= 482 parsing product price fail, price = 0 
- The Product passed: Row ~= 483 parsing product price fail, price = 0 
- The Product passed: Row ~= 484 parsing product price fail, price = 0 
- The Product passed: Row ~= 492 parsing product price fail, price = 0 
- The Product passed: Row ~= 493 parsing product price fail, price = 0 
- The Product passed: Row ~= 494 parsing product price fail, price = 0 
- The Product passed: Row ~= 495 parsing product price fail, price = 0 
- The Product passed: Row ~= 496 parsing product price fail, price = 0 
- The Product passed: Row ~= 497 parsing product price fail, price = 0 
- The Product passed: Row ~= 498 parsing product price fail, price = 0 
- The Product passed: Row ~= 499 parsing product price fail, price = 0 
- The Product passed: Row ~= 500 parsing product price fail, price = 0 
- The Product passed: Row ~= 501 parsing product price fail, price = 0 
- The Product passed: Row ~= 502 parsing product price fail, price = 0 
-Row ~= 523 SKU = 250614 Attribute parse error 
-Row ~= 539 SKU = 226973 Attribute parse error 
-Row ~= 541 SKU = 226970 Attribute parse error 
-Row ~= 543 SKU = 226980 Attribute parse error 
-Row ~= 545 SKU = 226981 Attribute parse error 
-Row ~= 547 SKU = 226985 Attribute parse error 
- The Product passed: Row ~= 584 parsing product price fail, price = 0 
- The Product passed: Row ~= 585 parsing product price fail, price = 0 
- The Product passed: Row ~= 586 parsing product price fail, price = 0 
- The Product passed: Row ~= 610 parsing product price fail, price = 0 
- The Product passed: Row ~= 611 parsing product price fail, price = 0 
- The Product passed: Row ~= 662 parsing product price fail, price = 0 
- The Product passed: Row ~= 707 parsing product price fail, price = 0 
-Row ~= 709 SKU = 240577 Attribute parse error 
-Row ~= 710 SKU = 236402 Attribute parse error 
-Row ~= 719 SKU = 250392 Attribute parse error 
-Row ~= 719 SKU = 250392 Attribute parse error 
-Row ~= 720 SKU = 250393 Attribute parse error 
-Row ~= 721 SKU = 250394 Attribute parse error 
-Row ~= 785 SKU = 245073 Attribute parse error 
- The Product passed: Row ~= 806 parsing product price fail, price = 0 
- The Product passed: Row ~= 807 parsing product price fail, price = 0 
- The Product passed: Row ~= 808 parsing product price fail, price = 0 
- The Product passed: Row ~= 809 parsing product price fail, price = 0 
- The Product passed: Row ~= 810 parsing product price fail, price = 0 
- The Product passed: Row ~= 811 parsing product price fail, price = 0 
- The Product passed: Row ~= 812 parsing product price fail, price = 0 
- The Product passed: Row ~= 814 parsing product price fail, price = 0 
- The Product passed: Row ~= 815 parsing product price fail, price = 0 
- The Product passed: Row ~= 816 parsing product price fail, price = 0 
- The Product passed: Row ~= 817 parsing product price fail, price = 0 
- The Product passed: Row ~= 818 parsing product price fail, price = 0 
- The Product passed: Row ~= 819 parsing product price fail, price = 0 
- The Product passed: Row ~= 820 parsing product price fail, price = 0 
-Row ~= 849 SKU = 224271 Attribute parse error 
- The Product passed: Row ~= 868 parsing product price fail, price = 0 
-Row ~= 873 SKU = 226640 Attribute parse error 
-Row ~= 874 SKU = 226641 Attribute parse error 
-Row ~= 875 SKU = 226642 Attribute parse error 
-Row ~= 878 SKU = 226643 Attribute parse error 
-Row ~= 885 SKU = 217085 Attribute parse error 
-Row ~= 888 SKU = 226700 Attribute parse error 
- The Product passed: Row ~= 975 parsing product price fail, price = 0 
-Row ~= 979 SKU = 228016 Attribute parse error 
-Row ~= 980 SKU = 228017 Attribute parse error 
-Row ~= 981 SKU = 228018 Attribute parse error 
-Row ~= 981 SKU = 228018 Attribute parse error 
-Row ~= 982 SKU = 224534 Attribute parse error 
- The Product passed: Row ~= 982 parsing product price fail, price = 0 
-Row ~= 984 SKU = 234218 Attribute parse error 
- The Product passed: Row ~= 984 parsing product price fail, price = 0 
-Row ~= 987 SKU = 228020 Attribute parse error 
- The Product passed: Row ~= 1023 parsing product price fail, price = 0 
-Row ~= 1033 SKU = 226647 Attribute parse error 
-Row ~= 1033 SKU = 226647 Attribute parse error 
- The Product passed: Row ~= 1066 parsing product price fail, price = 0 
- The Product passed: Row ~= 1067 parsing product price fail, price = 0 
- The Product passed: Row ~= 1068 parsing product price fail, price = 0 
- Attribute name: Дистанция обнаружения (людей/машин), м is too large. I cat it. 
- Attribute name: Дистанция обнаружения (людей/машин), м is too large. I cat it. 
+ The Product passed: Row ~= 177 parsing product price fail, price = 0 
+ The Product passed: Row ~= 178 parsing product price fail, price = 0 
+ The Product passed: Row ~= 179 parsing product price fail, price = 0 
+ The Product passed: Row ~= 180 parsing product price fail, price = 0 
+ The Product passed: Row ~= 181 parsing product price fail, price = 0 
+ The Product passed: Row ~= 182 parsing product price fail, price = 0 
+ The Product passed: Row ~= 183 parsing product price fail, price = 0 
+ The Product passed: Row ~= 184 parsing product price fail, price = 0 
+ The Product passed: Row ~= 184 parsing product price fail, price = 0 
+ The Product passed: Row ~= 186 parsing product price fail, price = 0 
+ The Product passed: Row ~= 188 parsing product price fail, price = 0 
+ The Product passed: Row ~= 189 parsing product price fail, price = 0 
+ The Product passed: Row ~= 190 parsing product price fail, price = 0 
+ The Product passed: Row ~= 191 parsing product price fail, price = 0 
+ The Product passed: Row ~= 192 parsing product price fail, price = 0 
+ The Product passed: Row ~= 193 parsing product price fail, price = 0 
+ The Product passed: Row ~= 194 parsing product price fail, price = 0 
+ The Product passed: Row ~= 195 parsing product price fail, price = 0 
+ The Product passed: Row ~= 196 parsing product price fail, price = 0 
+ The Product passed: Row ~= 197 parsing product price fail, price = 0 
+ The Product passed: Row ~= 199 parsing product price fail, price = 0 
+ The Product passed: Row ~= 200 parsing product price fail, price = 0 
+ The Product passed: Row ~= 202 parsing product price fail, price = 0 
+ The Product passed: Row ~= 203 parsing product price fail, price = 0 
+ The Product passed: Row ~= 204 parsing product price fail, price = 0 
+ The Product passed: Row ~= 206 parsing product price fail, price = 0 
+ The Product passed: Row ~= 207 parsing product price fail, price = 0 
+ The Product passed: Row ~= 208 parsing product price fail, price = 0 
+ The Product passed: Row ~= 209 parsing product price fail, price = 0 
+Row ~= 211 SKU = 217793 Attribute parse error 
+Row ~= 212 SKU = 251060 Attribute parse error 
+ The Product passed: Row ~= 232 parsing product price fail, price = 0 
+ The Product passed: Row ~= 238 parsing product price fail, price = 0 
+ The Product passed: Row ~= 239 parsing product price fail, price = 0 
+Row ~= 241 SKU = 242694 Attribute parse error 
+Row ~= 242 SKU = 242695 Attribute parse error 
+Row ~= 243 SKU = 242696 Attribute parse error 
+Row ~= 244 SKU = 256387 Attribute parse error 
+Row ~= 245 SKU = 256388 Attribute parse error 
+Row ~= 246 SKU = 256344 Attribute parse error 
+Row ~= 247 SKU = 256345 Attribute parse error 
+Row ~= 248 SKU = 256346 Attribute parse error 
+Row ~= 249 SKU = 256347 Attribute parse error 
+Row ~= 250 SKU = 256352 Attribute parse error 
+Row ~= 251 SKU = 256353 Attribute parse error 
+Row ~= 252 SKU = 256354 Attribute parse error 
+Row ~= 253 SKU = 256355 Attribute parse error 
+Row ~= 254 SKU = 256356 Attribute parse error 
+Row ~= 255 SKU = 256357 Attribute parse error 
+Row ~= 256 SKU = 256358 Attribute parse error 
+Row ~= 257 SKU = 256359 Attribute parse error 
+Row ~= 258 SKU = 256360 Attribute parse error 
+Row ~= 259 SKU = 256361 Attribute parse error 
+Row ~= 260 SKU = 256362 Attribute parse error 
+Row ~= 261 SKU = 256363 Attribute parse error 
+Row ~= 262 SKU = 256364 Attribute parse error 
+Row ~= 263 SKU = 256365 Attribute parse error 
+Row ~= 264 SKU = 256366 Attribute parse error 
+Row ~= 265 SKU = 256367 Attribute parse error 
+Row ~= 265 SKU = 256367 Attribute parse error 
+Row ~= 266 SKU = 256368 Attribute parse error 
+Row ~= 267 SKU = 256369 Attribute parse error 
+Row ~= 268 SKU = 256370 Attribute parse error 
+Row ~= 269 SKU = 256371 Attribute parse error 
+Row ~= 270 SKU = 256372 Attribute parse error 
+Row ~= 271 SKU = 256373 Attribute parse error 
+Row ~= 272 SKU = 256374 Attribute parse error 
+Row ~= 273 SKU = 256375 Attribute parse error 
+Row ~= 274 SKU = 256376 Attribute parse error 
+Row ~= 275 SKU = 256377 Attribute parse error 
+Row ~= 276 SKU = 256378 Attribute parse error 
+Row ~= 277 SKU = 256379 Attribute parse error 
+Row ~= 278 SKU = 212691 Attribute parse error 
+Row ~= 279 SKU = 221429 Attribute parse error 
+Row ~= 280 SKU = 225561 Attribute parse error 
+Row ~= 281 SKU = 229599 Attribute parse error 
+Row ~= 282 SKU = 240888 Attribute parse error 
+Row ~= 283 SKU = 232983 Attribute parse error 
+Row ~= 284 SKU = 239000 Attribute parse error 
+Row ~= 285 SKU = 235930 Attribute parse error 
+Row ~= 286 SKU = 237474 Attribute parse error 
+Row ~= 287 SKU = 231472 Attribute parse error 
+Row ~= 288 SKU = 256311 Attribute parse error 
+Row ~= 289 SKU = 256312 Attribute parse error 
+Row ~= 290 SKU = 256313 Attribute parse error 
+Row ~= 291 SKU = 256314 Attribute parse error 
+Row ~= 292 SKU = 256315 Attribute parse error 
+Row ~= 293 SKU = 256316 Attribute parse error 
+Row ~= 294 SKU = 256317 Attribute parse error 
+Row ~= 295 SKU = 256318 Attribute parse error 
+Row ~= 296 SKU = 256319 Attribute parse error 
+Row ~= 297 SKU = 256320 Attribute parse error 
+Row ~= 298 SKU = 256321 Attribute parse error 
+Row ~= 299 SKU = 256322 Attribute parse error 
+Row ~= 300 SKU = 256323 Attribute parse error 
+Row ~= 301 SKU = 256324 Attribute parse error 
+Row ~= 302 SKU = 256325 Attribute parse error 
+Row ~= 303 SKU = 256326 Attribute parse error 
+Row ~= 304 SKU = 256327 Attribute parse error 
+Row ~= 305 SKU = 256328 Attribute parse error 
+Row ~= 306 SKU = 256329 Attribute parse error 
+Row ~= 307 SKU = 256330 Attribute parse error 
+Row ~= 308 SKU = 256331 Attribute parse error 
+Row ~= 309 SKU = 257651 Attribute parse error 
+Row ~= 310 SKU = 257650 Attribute parse error 
+Row ~= 311 SKU = 256678 Attribute parse error 
+Row ~= 312 SKU = 256679 Attribute parse error 
+Row ~= 313 SKU = 256382 Attribute parse error 
+Row ~= 314 SKU = 256383 Attribute parse error 
+Row ~= 315 SKU = 256384 Attribute parse error 
+Row ~= 316 SKU = 256332 Attribute parse error 
+Row ~= 317 SKU = 256333 Attribute parse error 
+Row ~= 318 SKU = 256334 Attribute parse error 
+Row ~= 319 SKU = 256335 Attribute parse error 
+Row ~= 320 SKU = 256336 Attribute parse error 
+Row ~= 321 SKU = 256337 Attribute parse error 
+Row ~= 322 SKU = 256338 Attribute parse error 
+Row ~= 323 SKU = 256339 Attribute parse error 
+ The Product passed: Row ~= 323 parsing product price fail, price = 0 
+Row ~= 325 SKU = 256340 Attribute parse error 
+Row ~= 326 SKU = 256341 Attribute parse error 
+Row ~= 327 SKU = 256342 Attribute parse error 
+Row ~= 328 SKU = 256343 Attribute parse error 
+Row ~= 329 SKU = 256348 Attribute parse error 

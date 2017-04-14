@@ -120,7 +120,7 @@
             <?php if ($moneymaker2_footer_powered_custom_text) { ?>
               <?php echo $moneymaker2_footer_powered_custom_text; ?><br />
             <?php } ?>
-            <?php echo $moneymaker2_footer_powered_custom_title; ?> &copy; <?php if ($moneymaker2_footer_powered_custom_year) { ?><?php echo $moneymaker2_footer_powered_custom_year; ?> &ndash; <?php } ?><?php echo date("Y"); ?>
+            &copy; <?php if ($moneymaker2_footer_powered_custom_year) { ?><?php echo $moneymaker2_footer_powered_custom_year; ?> &ndash; <?php } ?><?php echo date("Y"); ?> <?php echo $moneymaker2_footer_powered_custom_title; ?>
           <?php } ?>
         </div>
         <?php } ?>

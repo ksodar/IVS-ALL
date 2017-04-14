@@ -142,13 +142,24 @@ class ControllerProductManufacturer extends Controller {
 				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url)
 			);
 
-			if ($manufacturer_info['meta_title']) {
-				$this->document->setTitle($manufacturer_info['meta_title']);
-			} else {
-				$this->document->setTitle($manufacturer_info['name']);
-			}
+			//инклудим файл с урлами генерации
+			include_once($_SERVER['DOCUMENT_ROOT'] . '/duplicatepages.php');
+			if(in_array($_SERVER['REQUEST_URI'], $duplicate)){
+			//генерим title
+			$this->document->setTitle('Производители ' . $manufacturer_info['name']);
+			}else{
+				if ($manufacturer_info['meta_title']) {
+					$this->document->setTitle($manufacturer_info['meta_title']);
+				} else {
+					$this->document->setTitle($manufacturer_info['name']);
+				}
+            }
 
-			$this->document->setDescription($manufacturer_info['meta_description']);
+			if(!$manufacturer_info['meta_description']){
+              $this->document->setDescription($manufacturer_info['meta_title'] . '. Все для вашего удобства и безопасности');
+            }else{
+			  $this->document->setDescription($manufacturer_info['meta_description']);
+		    }
 			$this->document->setKeywords($manufacturer_info['meta_keyword']);
 
 			if ($manufacturer_info['meta_h1']) {

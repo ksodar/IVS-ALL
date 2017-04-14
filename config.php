@@ -1,6 +1,6 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://ivssystem.ru/');
+define('HTTP_SERVER', 'https://ivssystem.ru/');
 
 // HTTPS
 define('HTTPS_SERVER', 'https://ivssystem.ru/');

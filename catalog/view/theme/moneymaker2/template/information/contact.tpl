@@ -149,7 +149,7 @@
           <?php echo $captcha; ?>
           <div class="form-group required">
               <div class="buttons col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-angle-right"></i> <?php echo $button_submit; ?></button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-flip-horizontal fa-reply-all"></i> <?php echo $button_submit; ?></button>
               </div>
           </div>
         </fieldset>

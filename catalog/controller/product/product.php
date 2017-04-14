@@ -214,13 +214,24 @@ class ControllerProductProduct extends Controller {
 				'href' => $this->url->link('product/product', $url . '&product_id=' . $this->request->get['product_id'])
 			);
 
-			if ($product_info['meta_title']) {
-				$this->document->setTitle($product_info['meta_title']);
-			} else {
-				$this->document->setTitle($product_info['name']);
-			}
+			//инклудим файл с урлами генерации
+            include_once($_SERVER['DOCUMENT_ROOT'] . '/duplicatepages.php');
+            if(in_array($_SERVER['REQUEST_URI'], $duplicate)){
+	            $parent = count($data['breadcrumbs']) - 2;
+	            $this->document->setTitle($data['breadcrumbs']["$parent"]['text'] . ' ' . $product_info['name']);
+            }else{
+				if ($category_info['meta_title']) {
+					$this->document->setTitle($product_info['meta_title']);
+				} else {
+					$this->document->setTitle($product_info['name']);
+				}
+            }
 
-			$this->document->setDescription($product_info['meta_description']);
+			if(!$category_info['meta_description']){
+              $this->document->setDescription(($product_info['meta_title']) ? $product_info['meta_title'] . '. Все для вашего удобства и безопасности' : $product_info['name'] . '. Все для вашего удобства и безопасности');
+            }else{
+			  $this->document->setDescription($product_info['meta_description']);
+			}
 			$this->document->setKeywords($product_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
 			$this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');

@@ -90,14 +90,27 @@ class ControllerProductCategory extends Controller {
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
 		if ($category_info) {
-
+		  //инклудим файл с урлами генерации
+		  include_once($_SERVER['DOCUMENT_ROOT'] . '/duplicatepages.php');
+          if(in_array($_SERVER['REQUEST_URI'], $duplicate)){
+            //бьем урл чтобы узнать всех родителей
+          	$parts = explode('_', (string)$this->request->get['path']);
+          	//берем предпоследнего родителя - предпоследняя хк
+          	$category_parent = $this->model_catalog_category->getCategory($parts[count($parts)-2]);
+            //генерим title
+            $this->document->setTitle($category_parent['name'] . ' ' . $category_info['name']);
+          }else{
 			if ($category_info['meta_title']) {
 				$this->document->setTitle($category_info['meta_title']);
 			} else {
 				$this->document->setTitle($category_info['name']);
 			}
-
+		  }
+           if(!$category_info['meta_description']){
+            $this->document->setDescription(($category_info['meta_title']) ? $category_info['meta_title'] . '. Все для вашего удобства и безопасности' : $category_info['name'] . '. Все для вашего удобства и безопасности');
+           }else{
 			$this->document->setDescription($category_info['meta_description']);
+		   } 
 			$this->document->setKeywords($category_info['meta_keyword']);
 
 			if ($category_info['meta_h1']) {

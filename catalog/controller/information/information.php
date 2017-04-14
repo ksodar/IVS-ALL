@@ -28,7 +28,11 @@ class ControllerInformationInformation extends Controller {
 				$this->document->setTitle($information_info['title']);
 			}
 
-			$this->document->setDescription($information_info['meta_description']);
+			if(!$information_info['meta_description']){
+              $this->document->setDescription($information_info['meta_title'] . '. Все для вашего удобства и безопасности');
+            }else{
+              $this->document->setDescription($information_info['meta_description']);
+            }
 			$this->document->setKeywords($information_info['meta_keyword']);
 
 			$data['breadcrumbs'][] = array(

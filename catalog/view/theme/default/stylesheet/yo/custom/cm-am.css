@@ -72,11 +72,11 @@
     border: none;
     background: transparent;
 }
-/* .cm-am li+li, */
-/* .cm-am li li */
-/* { */
-    /* border-top: 1px solid rgba(0,0,0,.085); */
-}
+/* .cm-am li+li,
+.cm-am li li
+{
+    border-top: 1px solid rgba(0,0,0,.085);
+} */
 .cm-am li a.item-current
 {
     font-weight: bold;
@@ -100,13 +100,13 @@
 .cm-am li.active > .item-wrapper
 {
     color: #333;
-    background-color: rgba(232, 232, 232, 1);/*rgba(0,0,0,.02); */
+    background-color: rgba(232, 232, 232, 1);/*rgba(0,0,0,.02); цвет активной ячейки*/
     text-shadow: 0 1px 0 #fff;
 }
 .cm-am li .item-wrapper:hover
 {
     color: #333;
-    background-color: rgba(232, 232, 232, .6);/*rgba(0,0,0,.02);*/ 
+    background-color: rgba(232, 232, 232, .6);/*rgba(0,0,0,.02); цвет ячейки при наведении*/ 
     text-shadow: 0 1px 0 #fff;
 }
 .cm-am .item-wrapper > div
@@ -271,7 +271,7 @@
 .cm-am li li.active > .item-wrapper .item-arrow:before,
 .cm-am li li .item-current .item-arrow:before
 {
-    /*color: #23a1d1;*/
+    /*color: #23a1d1; цвет точки слева*/
     opacity: 1;
 }
 .cm-am  li li .item-wrapper
